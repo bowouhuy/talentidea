@@ -118,11 +118,11 @@
                             <ul class="navigation-menu">
 
                                 <li class="has-submenu">
-                                    <a href="index.html"><i class="dripicons-meter"></i>Dashboard</a>
+                                    <a href="index.html"><i class="fa fa-home"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="#"><i class="dripicons-briefcase"></i>Daftar Jasa<i class="mdi mdi-chevron-down mdi-drop"></i></a>
+                                    <a href="#"><i class="fa fa-list-ul"></i>Kategori<i class="mdi mdi-chevron-down mdi-drop"></i></a>
                                     <ul class="submenu megamenu">
                                         <li>
                                             <ul>
@@ -145,8 +145,7 @@
             </header>
             <!-- End Navigation Bar-->
 
-            <div class="container-fluid">
-                <!-- Page-Title -->
+            <!-- <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title-box">
@@ -162,15 +161,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- end page title end breadcrumb -->
-            </div>
+            </div> -->
         </div>
-        <div class="wrapper">
-            <div class="container-fluid">
-                @yield('body')
-            </div> <!-- end container-fluid -->
-        </div>
-        <!-- end wrapper -->
+        
+        @yield('body')
 
         <!-- Footer -->
         @extends('user.layouts.footer')
