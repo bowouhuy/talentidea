@@ -11,6 +11,8 @@
 <script src="{{ asset('user_template/assets/plugins/morris/morris.min.js')}} "></script>
 <script src="{{ asset('user_template/assets/plugins/raphael/raphael-min.js')}} "></script>
 
-<script src="{{ asset('user_template/assets/pages/dashboard.js')}} "></script>
+<!-- <script src="{{ asset('user_template/assets/plugins/dropzone/dist/dropzone.js')}} "></script> -->
+<!-- <script src="{{ asset('user_template/assets/plugins/sweet-alert2/sweetalert2.min.js')}} "></script> -->
 <!-- App js -->
+<script src="{{ asset('user_template/assets/pages/dashboard.js')}} "></script>
 <script src="{{ asset('user_template/assets/js/app.js')}} "></script>

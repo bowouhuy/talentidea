@@ -8,6 +8,7 @@
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <!-- App Icons -->
         <link rel="shortcut icon" href="{{ asset('user_template/assets/images/favicon.ico')}} ">
@@ -15,15 +16,18 @@
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{ asset('user_template/assets/plugins/morris/morris.css')}} ">
 
+        <!-- Dropzone css -->
+        <link href="{{ asset('user_template/assets/plugins/dropzone/dist/dropzone.css')}} " rel="stylesheet" type="text/css">
+
         <!-- App css -->
         <link href="{{ asset('user_template/assets/css/bootstrap.min.css')}} " rel="stylesheet" type="text/css" />
         <link href="{{ asset('user_template/assets/css/icons.css')}} " rel="stylesheet" type="text/css" />
         <link href="{{ asset('user_template/assets/css/style.css')}} " rel="stylesheet" type="text/css" />
-
+        <link href="{{ asset('user_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
+        
     </head>
 
     <body>
-
         <!-- Loader -->
         <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 
@@ -37,7 +41,7 @@
                         <div class="d-block d-lg-none mr-5">
                             
                             <a href="index.html" class="logo">
-                                <img src="user_template/assets/images/logo-sm.png" alt="" height="28" class="logo-small"> 
+                                <img src="{{ asset('user_template/assets/images/logo-sm.png') }}" alt="" height="28" class="logo-small"> 
                             </a>
 
                         </div>
@@ -60,7 +64,7 @@
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="false" aria-expanded="false">
-                                        <img src="user_template/assets/images/users/avatar-6.jpg" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('user_template/assets/images/users/avatar-6.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="d-none d-md-inline-block ml-1">Donald T. <i class="mdi mdi-chevron-down"></i> </span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
@@ -107,61 +111,36 @@
                              -->
                             <!-- Image Logo -->
                              <a href="index.html" class="logo">
-                                <img src="user_template/assets/images/logo.png" alt="" height="20" class="logo-large">
+                                <img src="{{asset('user_template/assets/images/logo.png')}}" alt="" height="20" class="logo-large">
                             </a>
 
                         </div>
                         <!-- End Logo-->
                         <div id="navigation">
-
-                            <!-- Navigation Menu-->
                             <ul class="navigation-menu">
-
                                 <li class="has-submenu">
-                                    <a href="index.html"><i class="fa fa-home"></i>Home</a>
+                                    <a href="{{url('/')}}"><i class="fa fa-home"></i>Home</a>
                                 </li>
-
                                 <li class="has-submenu">
                                     <a href="#"><i class="fa fa-list-ul"></i>Kategori<i class="mdi mdi-chevron-down mdi-drop"></i></a>
-                                    <ul class="submenu megamenu">
-                                        <li>
-                                            <ul>
-                                                <li><a href="ui-alerts.html">Alerts</a></li>
-                                                <li><a href="ui-badge.html">Badge</a></li>
-                                                <li><a href="ui-buttons.html">Buttons</a></li>
-                                                <li><a href="ui-cards.html">Cards</a></li>
-                                                <li><a href="ui-dropdowns.html">Dropdowns</a></li>
-                                                <li><a href="ui-navs.html">Navs</a></li>
+                                    <ul class="submenu">
+                                        @foreach ($menu as $main)
+                                        <li class="has-submenu pr-3">
+                                            <a href="#">{{$main->nama}}</a>
+                                            <ul class="submenu">
+                                                @foreach ($main->subkategori as $sub)
+                                                <li><a href="{{url('jasa',$sub->id)}}">{{$sub->nama}}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
+                                        @endforeach
                                     </ul>
                                 </li>
-
                             </ul>
-                            <!-- End navigation menu -->
-                        </div> <!-- end #navigation -->
-                    </div> <!-- end container -->
-                </div> <!-- end navbar-custom -->
-            </header>
-            <!-- End Navigation Bar-->
-
-            <!-- <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <div class="row align-items-center">
-                                <div class="col-md-12">
-                                    <h4 class="page-title mb-0">{{ $title }}</h4>
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
-                                    </ol>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                </div>
-            </div> -->
+                </div> 
+            </header>
         </div>
         
         @yield('body')
@@ -169,8 +148,6 @@
         <!-- Footer -->
         @extends('user.layouts.footer')
         <!-- End Footer -->
-
         @extends('user.layouts.script')
-
     </body>
 </html>

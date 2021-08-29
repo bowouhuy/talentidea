@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Jasaimage extends Model
 {
     use HasFactory;
+    protected $table = 'jasa_images';
 }

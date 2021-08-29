@@ -15,7 +15,7 @@
                         <div class="col-md-6 mx-auto">
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
-                                    <button class="btn btn-block btn-lg btn-light">Temukan Creator</button>
+                                    <button class="btn btn-block btn-lg btn-light"><i class="fa fa-search mr-2"></i> Temukan Creator</button>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <button class="btn btn-block btn-lg btn-outline-light">Daftar Sebagai Creator</button>
@@ -28,44 +28,31 @@
         </div>
     </div>
 </div>
-<div style="margin-top: -4em; padding-top: 0px">
+<div style="margin-top: -6em; padding-top: 0px">
     <div class="row">
         <div class="col-md-7 mx-auto">
             <div class="card py-2">
                 <div class="card-body text-center">
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-2">
-                            <a href="#" class="text-secondary">
-                                <i class="fa fa-camera fa-2x mx-2"></i> <br>
-                                <div class="font-weight-bold px-4">Visual dan Audio</div>
-                            </a>
+                    <div id="topnav">
+                        <div class="navbar-custom">
+                            <div id="navigation">
+                                <ul class="navigation-menu">
+                                    @foreach ($menu as $main)
+                                    <li class="has-submenu">
+                                        <a href="#" class="text-secondary" style="padding-left:0px; padding-right:0px;">
+                                            <i class="{{$main->icon}} mx-2" style="font-size:25px; margin:10px"></i> <br>
+                                            <div class="font-weight-bold px-4">{{$main->nama}}</div>
+                                        </a>
+                                        <ul class="submenu">
+                                            @foreach ($main->subkategori as $sub)
+                                            <li><a href="{{url('jasa',$sub->id)}}">{{$sub->nama}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <a href="#" class="text-secondary">
-                                <i class="fa fa-paint-brush fa-2x mx-2"></i> <br>
-                                <div class="font-weight-bold px-4">Pemasaran dan Periklanan</div>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" class="text-secondary">
-                                <i class="fa fa-image fa-2x mx-2"></i> <br>
-                                <div class="font-weight-bold px-4">Desain Grafis</div>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" class="text-secondary">
-                                <i class="fa fa-laptop fa-2x mx-2"></i> <br>
-                                <div class="font-weight-bold px-4">Web dan Pemrograman</div>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" class="text-secondary">
-                                <i class="fa fa-pencil fa-2x mx-2"></i> <br>
-                                <div class="font-weight-bold px-4">Penulisan dan Penerjemahan</div>
-                            </a>
-                        </div>
-                        <div class="col-md-1"></div>
                     </div>
                 </div>
             </div>
@@ -130,51 +117,29 @@
                 <div class="row mb-3">
                     <div class="col-12">
                         <h4 class="m-t-30 m-b-20">Freelancer Populer</h4>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img class="card-img-top img-fluid" src="user_template/assets/images/small/img-4.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title font-20 mt-0">Card title</h4>
-                                        <p class="card-text">This is a longer card with supporting text below as
-                                            a natural lead-in to additional content. This content is a little
-                                            bit longer.</p>
-                                        <p class="card-text">
-                                            <small class="text-muted">Last updated 3 mins ago</small>
-                                        </p>
-                                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($jasa as $data)
+                    <div class="col-md-3">
+                        <div class="card">
+                            <a href="{{url('jasa/detail',$data->id)}}">
+                                @if ($data->image)
+                                <img class="card-img-top img-fluid" src="{{asset('images/jasa_image/'.$data->image)}}" alt="Card image cap">
+                                @else
+                                <img class="card-img-top img-fluid" src="user_template/assets/images/small/img-4.jpg" alt="Card image cap">
+                                @endif
+                                <div class="card-body">
+                                    <h4 class="card-title font-20 mt-0">{{$data->nama}} </h4>
+                                    <p class="card-text">{{Str::limit($data->deskripsi), 50, $end='...'}}</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Last updated {{$data->created_at}}</small>
+                                    </p>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img class="card-img-top img-fluid" src="user_template/assets/images/small/img-4.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title font-20 mt-0">Card title</h4>
-                                        <p class="card-text">This is a longer card with supporting text below as
-                                            a natural lead-in to additional content. This content is a little
-                                            bit longer.</p>
-                                        <p class="card-text">
-                                            <small class="text-muted">Last updated 3 mins ago</small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <img class="card-img-top img-fluid" src="user_template/assets/images/small/img-4.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title font-20 mt-0">Card title</h4>
-                                        <p class="card-text">This is a longer card with supporting text below as
-                                            a natural lead-in to additional content. This content is a little
-                                            bit longer.</p>
-                                        <p class="card-text">
-                                            <small class="text-muted">Last updated 3 mins ago</small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
