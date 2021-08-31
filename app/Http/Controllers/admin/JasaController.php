@@ -179,7 +179,15 @@ class JasaController extends Controller
     public function delete_jasa($jasa_id){
         $jasa = Jasa::find($jasa_id);
         $paket = Paket::where('jasa_id',$jasa_id);
-        $paket->delete();
+        $jasa_image = Jasaimage::where('jasa_id',$jasa_id);
+        if($jasa_image){
+            $jasa_image->delete();
+        }
+
+        if($paket){
+            $paket->delete();
+        }
+
         if($jasa->delete()){
             return redirect('admin/jasa');
         }
