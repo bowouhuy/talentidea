@@ -68,7 +68,7 @@
                             <div class="col-12">
                                 <h4 class="m-b-20 text-primary">{{$jasa->nama}}</h4>
                                 <p>
-                                    {{$jasa->deskripsi}}
+                                    {!!$jasa->deskripsi!!}
                                 </p>
                             </div>
                         </div>

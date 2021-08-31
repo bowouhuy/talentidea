@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Talentidea | Mitra</title>
+        <title>Talentidea | Internal</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,11 +15,16 @@
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/morris/morris.css') }}">
 
+        <link href="{{ asset('admin_template/assets/plugins/dropzone/dist/dropzone.css')}} " rel="stylesheet" type="text/css">
         <!-- Basic Css files -->
         <link href="{{ asset('admin_template/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('admin_template/assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('admin_template/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('admin_template/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('admin_template/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.css') }}">
+        <link href="{{ asset('admin_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
+        
     </head>
     <body class="fixed-left">
         <!-- Loader -->
@@ -32,8 +37,8 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <a href="index.html" class="logo">
-                        <img src="admin_template/assets/images/logo.png" alt="" height="20" class="logo-large">
-                        <img src="admin_template/assets/images/logo-sm.png" alt="" height="22" class="logo-sm">
+                        <img src="{{asset('admin_template/assets/images/logo.png')}}" alt="" height="20" class="logo-large">
+                        <img src="{{asset('admin_template/assets/images/logo-sm.png')}}" alt="" height="22" class="logo-sm">
                     </a>
                 </div>
 
@@ -53,7 +58,7 @@
                         <li class="list-inline-item dropdown notification-list">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
-                                <img src="admin_template/assets/images/users/avatar-6.jpg" alt="user" class="rounded-circle">
+                                <img src="{{ asset('admin_template/assets/images/users/avatar-6.jpg')}} " alt="user" class="rounded-circle">
                                 <span class="d-none d-md-inline-block ml-1">Donald T. <i class="mdi mdi-chevron-down"></i> </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
@@ -89,18 +94,49 @@
                         <ul class="metismenu" id="side-menu">
                             <li class="menu-title">Main</li>
                             <li>
-                                <a href="index.html" class=" waves-effect">
+                                <a href="{{url('admin')}}" class=" waves-effect">
                                     <i class="dripicons-meter"></i><span class="badge badge-info badge-pill float-right">2</span> <span> Dashboard </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-message"></i><span> Email <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                                <ul class="submenu">
-                                    <li><a href="email-inbox.html">Inbox</a></li>
-                                    <li><a href="email-read.html">Email Read</a></li>
-                                    <li><a href="email-compose.html">Email Compose</a></li>
-                                </ul>
+                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                    <i class="dripicons-briefcase"></i><span> Jasa </span>
+                                </a>
                             </li>
+                            <li class="menu-title">Monitoring</li>
+                            <li>
+                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                    <i class="dripicons-swap"></i><span> Transaksi </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                    <i class="dripicons-user"></i><span> Mitra </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                    <i class="dripicons-user-group"></i><span> Customer </span>
+                                </a>
+                            </li>
+                            <li class="menu-title">Basis Data</li>
+                            <li>
+                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                    <i class="dripicons-view-list-large"></i><span> Kategori </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                    <i class="dripicons-view-list"></i><span> Sub Kategori </span>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-message"></i><span> Basis Data <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                <ul class="submenu">
+                                    <li><a href="email-inbox.html">Kategori</a></li>
+                                    <li><a href="email-read.html">Sub Kategori</a></li>
+                                </ul>
+                            </li> -->
                         </ul>
                     </div>
                     <!-- Sidebar -->
@@ -117,10 +153,10 @@
                                 <div class="page-title-box">
                                     <div class="row align-items-center">
                                         <div class="col-md-12">
-                                            <h4 class="page-title mb-0"> Dashboard </h4>
+                                            <h4 class="page-title mb-0"> {{$title}} </h4>
                                             <ol class="breadcrumb m-0">
-                                                <li class="breadcrumb-item"><a href="#">Foxia</a></li>
-                                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                                <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                                                <li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
                                             </ol>
                                         </div>
                                     </div>
@@ -133,7 +169,6 @@
                 @extends('admin.layouts.footer')
             </div>
         </div>
-
         @extends('admin.layouts.script')
     </body>
 </html>

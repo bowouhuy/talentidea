@@ -131,7 +131,7 @@
                                 @endif
                                 <div class="card-body">
                                     <h4 class="card-title font-20 mt-0">{{$data->nama}} </h4>
-                                    <p class="card-text">{{Str::limit($data->deskripsi), 50, $end='...'}}</p>
+                                    <p class="card-text">{!! Str::limit($data->deskripsi), 50, $end='...' !!}</p>
                                     <p class="card-text">
                                         <small class="text-muted">Last updated {{$data->created_at}}</small>
                                     </p>

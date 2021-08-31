@@ -9,4 +9,16 @@ class Paket extends Model
 {
     use HasFactory;
     protected $table = 'paket';
+
+    protected $fillable = [
+        'jasa_id',
+        'nama',
+        'deskripsi',
+        'estimasi',
+        'harga',
+    ];
+
+    public function jasa(){
+        return $this->belongsTo('App\Models\Jasa', 'jasa_id', 'id');
+    }
 }
