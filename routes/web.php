@@ -30,12 +30,16 @@ use App\Http\Controllers\admin\JasaController as AdminJasaController;
 /* ROUTE USER */
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
-    Route::get('/jasa/{subkategori_id?}', [JasaController::class, 'index']);
-    Route::get('/jasa/detail/{jasa_id}', [JasaController::class, 'show']);
-    Route::get('/jasa/invoice/{paket_id}', [InvoiceController::class, 'index']);
-    // Route::get('/invoice/{transaksi_id}', [InvoiceController::class, 'show']);
-    Route::post('/invoice/store', [InvoiceController::class, 'store']);
-    Route::get('/invoice/delete_files/{filename}', [InvoiceController::class, 'delete_files']);
+    Route::get('profile', [HomeController::class, 'profile']);
+    Route::prefix('jasa')->group(function () {
+        Route::get('{subkategori_id?}', [JasaController::class, 'index']);
+        Route::get('detail/{jasa_id}', [JasaController::class, 'show']);
+        Route::get('invoice/{paket_id}', [InvoiceController::class, 'index']);
+    });
+    Route::prefix('invoice')->group(function () {
+        Route::post('store', [InvoiceController::class, 'store']);
+        Route::get('delete_files/{filename}', [InvoiceController::class, 'delete_files']);
+    });
 });
 
 /* ROUTE ADMIN */

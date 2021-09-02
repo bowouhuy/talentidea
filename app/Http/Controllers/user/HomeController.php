@@ -43,4 +43,13 @@ class HomeController extends Controller
 
         return view('user.home.index', $data);
     }
+
+    public function profile() {
+        $data = array(
+            'title'=> 'Profile',
+            'menu' => $this->menu,
+        );
+
+        return view('user.home.profile', $data);
+    }
 }

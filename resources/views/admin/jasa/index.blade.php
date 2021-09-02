@@ -13,6 +13,7 @@
                     <thead>
                         <tr>
                             <th class="text-center">id</th>
+                            <!-- <th>Image</th> -->
                             <th class="text-center">Nama Jasa</th>
                             <th class="text-center">Rating</th>
                             <th class="text-center">Mitra</th>
@@ -43,6 +44,7 @@
             "order": [[ 0, "desc" ]],
             columns: [
                 {data: 'id', name: 'id'},
+                // {data: 'jasa_image', name: 'jasa_image'},
                 {data: 'nama', name: 'nama'},
                 {data: 'rating', name: 'rating'},
                 {data: 'nama_mitra', name: 'nama_mitra'},

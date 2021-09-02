@@ -37,7 +37,7 @@
                             <div class="carousel-inner" role="listbox">
                                 @for ($i = 0; $i < count($carousel_images); $i++)
                                 <div class="carousel-item @if ($i == 0) active @endif">
-                                    <img class="d-block mx-auto img-fluid" src="{{asset('images/jasa_image/'.$carousel_images[$i]->url)}}" alt="{{$carousel_images[$i]->filename}}">
+                                    <img style="height:400px" class="d-block mx-auto img-fluid" src="{{asset('images/jasa_image/'.$carousel_images[$i]->url)}}" alt="{{$carousel_images[$i]->filename}}">
                                 </div>
                                 @endfor
                             </div>
