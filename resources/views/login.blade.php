@@ -45,16 +45,30 @@
 
                     <div class="p-3">
                         
-                        <form class="form-horizontal m-t-10" action="index.html">
-
+                        <form class="form-horizontal m-t-10" method="post" action="loginUser">
+                            @csrf
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
                             </div>
 
                             <div class="form-group">
                                 <label for="userpassword">Password</label>
-                                <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                <input type="password" class="form-control" id="userpassword" name="password" placeholder="Enter password">
                             </div>
 
                             <div class="form-group row m-t-30">

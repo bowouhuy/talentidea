@@ -64,17 +64,30 @@
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="false" aria-expanded="false">
-                                        <img src="{{ asset('user_template/assets/images/users/avatar-6.jpg') }}" alt="user" class="rounded-circle">
-                                        <span class="d-none d-md-inline-block ml-1">Donald T. <i class="mdi mdi-chevron-down"></i> </span>
+                                        
+                                        @if (Auth::check())
+                                            <img src="{{ asset('user_template/assets/images/users/avatar-6.jpg') }}" alt="user" class="rounded-circle">
+                                            <span class="d-none d-md-inline-block ml-1">
+                                            {{Auth::user()->username}}
+                                            <i class="mdi mdi-chevron-down"></i> </span>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+                                                <a class="dropdown-item" href="{{url('/profile')}}"><i class="dripicons-user text-muted"></i> Profile</a>
+                                                <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted"></i> My Wallet</a>
+                                                <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> Settings</a>
+                                                <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted"></i> Lock screen</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="{{ route('logout') }}"><i class="dripicons-exit text-muted"></i> Logout</a>
+                                            </div>
+                                        @else
+                                            <span class="d-none d-md-inline-block ml-1">
+                                                Login
+                                            <i class="mdi mdi-chevron-down"></i> </span>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+                                                <a class="dropdown-item" href="/login"><i class="dripicons-wallet text-muted"></i>Login</a>
+                                                <a class="dropdown-item" href="/register"><i class="dripicons-lock text-muted"></i>Register</a>
+                                            </div>
+                                        @endif
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
-                                        <a class="dropdown-item" href="{{url('/profile')}}"><i class="dripicons-user text-muted"></i> Profile</a>
-                                        <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted"></i> My Wallet</a>
-                                        <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> Settings</a>
-                                        <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted"></i> Lock screen</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#"><i class="dripicons-exit text-muted"></i> Logout</a>
-                                    </div>
                                 </li>
                                 <li class="menu-item list-inline-item">
                                     <!-- Mobile menu toggle-->

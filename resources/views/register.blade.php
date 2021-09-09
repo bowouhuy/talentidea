@@ -40,21 +40,40 @@
 
                     <div class="p-3">
                         
-                        <form class="form-horizontal m-t-10" action="index.html">
-
-                            <div class="form-group">
-                                <label for="useremail">Email</label>
-                                <input type="email" class="form-control" id="useremail" placeholder="Enter email">
+                        <form class="form-horizontal m-t-10" method="POST" action="createUser">
+                        @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-
+                        @endif
+                            <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" id="firstname" name="first_name" placeholder="Enter first name" required>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Enter last name">
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="useremail">Email</label>
+                                <input type="email" class="form-control" id="useremail" name="email" placeholder="Enter email">
                             </div>
 
                             <div class="form-group">
                                 <label for="userpassword">Password</label>
-                                <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                <input type="password" class="form-control" id="userpassword" name="password" placeholder="Enter password">
                             </div>
 
                             <div class="form-group row m-t-20">

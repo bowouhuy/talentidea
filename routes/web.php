@@ -63,6 +63,9 @@ Route::prefix('admin')->group(function () {
 /* ROUTE AUTH */
 Route::get('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'register']);
+Route::post('loginUser', [AuthController::class, 'loginUser']);
+Route::post('createUser', [AuthController::class, 'createUser']);
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 /* ROUTE HELPER */
 Route::prefix('helper')->group(function () {
