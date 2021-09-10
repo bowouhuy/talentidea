@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Jasa;
 use App\Models\Jasaimage;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -40,6 +41,8 @@ class HomeController extends Controller
             'menu' => $this->menu,
             'jasa' => $res
         );
+
+        
 
         return view('user.home.index', $data);
     }

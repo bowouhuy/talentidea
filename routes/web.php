@@ -34,7 +34,7 @@ Route::prefix('/')->group(function () {
     Route::prefix('jasa')->group(function () {
         Route::get('{subkategori_id?}', [JasaController::class, 'index']);
         Route::get('detail/{jasa_id}', [JasaController::class, 'show']);
-        Route::get('invoice/{paket_id}', [InvoiceController::class, 'index']);
+        Route::get('invoice/{paket_id}', [InvoiceController::class, 'index'])->middleware('auth');
     });
     Route::prefix('invoice')->group(function () {
         Route::post('store', [InvoiceController::class, 'store']);
@@ -61,7 +61,7 @@ Route::prefix('admin')->group(function () {
 });
 
 /* ROUTE AUTH */
-Route::get('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('loginUser', [AuthController::class, 'loginUser']);
 Route::post('createUser', [AuthController::class, 'createUser']);

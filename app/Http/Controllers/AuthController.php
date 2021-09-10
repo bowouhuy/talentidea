@@ -10,7 +10,9 @@ use Session;
 
 class AuthController extends Controller
 {
+
     public function login() {
+        session(['link' => url()->previous()]);
         return view('login');
     }
 
@@ -50,11 +52,14 @@ class AuthController extends Controller
         ];
 
         Auth::attempt($data);
-
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
             //Login Success
             Session::flash('success', 'Berhasil Login');
-            return redirect('/');
+            if(substr(session('link'), -8) === "register"){
+                return redirect('/');
+            }else{
+                return redirect(session('link'));
+            }
   
         } else { // false
   
