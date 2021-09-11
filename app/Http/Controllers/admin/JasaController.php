@@ -11,6 +11,7 @@ use App\Models\Subkategori;
 use App\Models\Paket;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class JasaController extends Controller
 {
@@ -90,7 +91,7 @@ class JasaController extends Controller
             $jasa = Jasa::create([
                 'nama' => $request->input('nama'),
                 'subkategori_id' => $request->input('subkategori_id'),
-                'mitra_id' => 1,
+                'mitra_id' => Auth::user()->id,
                 'deskripsi' => $request->input('deskripsi'),
             ]);
         } else {

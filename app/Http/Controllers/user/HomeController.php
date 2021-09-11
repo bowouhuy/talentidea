@@ -42,8 +42,6 @@ class HomeController extends Controller
             'jasa' => $res
         );
 
-        
-
         return view('user.home.index', $data);
     }
 

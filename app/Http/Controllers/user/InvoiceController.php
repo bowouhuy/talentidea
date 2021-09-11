@@ -10,6 +10,7 @@ use App\Models\Jasaimage;
 use App\Models\Paket;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
@@ -31,23 +32,14 @@ class InvoiceController extends Controller
         $paket = Paket::find($paket_id);
         $jasa = Jasa::find($paket->jasa_id);
         $mitra = Jasa::find($jasa->mitra_id)->mitra;
-        // $transaksi = Transaksi::create([
-        //     'customer_id' => 1,
-        //     'jasa_id' => $jasa->id,
-        //     'paket_id' => $paket_id,
-        //     'amount' => $paket->harga+($paket->harga*0.10),
-        //     'kode_invoice' => date('YmdHis'),
-        //     'tanggal_invoice' => date('Y-m-d'),
-        //     'tanggal_expired' => date('Y-m-d', strtotime('+3 days', strtotime(date('Y-m-d'))))
-        // ]);
-        
+
         $data = array(
             'title'=> 'Invoice',
             'menu' => $this->menu,
             'paket' => $paket,
             'jasa' => $jasa,
             'mitra' => $mitra,
-            // 'transaksi' => $transaksi
+            'customer' => Auth::user()
         );
 
         return view('user.invoice.index', $data);
@@ -104,7 +96,7 @@ class InvoiceController extends Controller
         $paket = Paket::find($paket_id);
         $jasa = Jasa::find($paket->jasa_id);
         $transaksi = Transaksi::create([
-            'customer_id' => 1,
+            'customer_id' => Auth::user()->id,
             'jasa_id' => $jasa->id,
             'paket_id' => $paket_id,
             'amount' => $paket->harga+($paket->harga*0.10),

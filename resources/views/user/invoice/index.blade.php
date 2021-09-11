@@ -41,10 +41,8 @@
                                     <div class="col-6">
                                         <address>
                                             <strong>Billed To:</strong><br>
-                                            John Smith<br>
-                                            1234 Main<br>
-                                            Apt. 4B<br>
-                                            Springfield, ST 54321
+                                            {{$customer->first_name}} {{$customer->last_name}}<br>
+                                            {{$customer->email}}
                                         </address>
                                     </div>
                                     <div class="col-6 text-right">
@@ -61,8 +59,8 @@
                                     <div class="col-6 m-t-30">
                                         <address>
                                             <strong>Payment Method:</strong><br>
-                                            Visa ending **** 4242<br>
-                                            jsmith@email.com <br>
+                                            BCA 1234 5678 9012<br>
+                                            admin@talenttra.id <br>
                                         </address>
                                     </div>
                                     <div class="col-6 m-t-30 text-right">
@@ -130,7 +128,7 @@
 
                                         <div class="d-print-none">
                                             <div class="pull-right">
-                                                <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
+                                                <!-- <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a> -->
                                                 <button class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#uploadModal">Konfirmasi Pembayaran</button>
                                             </div>
                                         </div>
