@@ -112,7 +112,7 @@
                                                     <td class="no-line"></td>
                                                     <td class="no-line"></td>
                                                     <td class="no-line text-center">
-                                                        <strong>Shipping</strong></td>
+                                                        <strong>Tax</strong></td>
                                                     <td class="no-line text-right">Rp. {{number_format($paket->harga*0.10)}}</td>
                                                 </tr>
                                                 <tr>

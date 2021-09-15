@@ -15,7 +15,7 @@
                         <div class="col-md-6 mx-auto">
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
-                                    <button class="btn btn-block btn-lg btn-light"><i class="fa fa-search mr-2"></i> Temukan Creator</button>
+                                    <button class="btn btn-block btn-lg btn-light" data-toggle="modal" data-target="#kategoriModal"><i class="fa fa-search mr-2"></i> Temukan Creator</button>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <button class="btn btn-block btn-lg btn-outline-light">Daftar Sebagai Creator</button>
@@ -216,4 +216,41 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="kategoriModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Freelancer kategori apa yang Anda cari?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                @foreach ($menu as $main)
+                    <div class="col-md-6">
+                        <a onclick="searchKategori('{{$main->subkategori}}')" href="#">
+                            <div class="card border" height="350px">
+                                <div class="p-3 card-body">
+                                    <div class="media text-secondary">
+                                        <i class="mx-3 my-auto thumb-md rounded-circle {{$main->icon}} fa-3x"></i>
+                                        <div class="media-body my-auto">
+                                            <h5 class="my-auto">{{$main->nama}}</h5>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function searchKategori(data){
+        console.log(data);
+    }
+</script>
 @endsection
