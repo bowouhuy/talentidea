@@ -32,6 +32,7 @@ Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('profile', [HomeController::class, 'profile']);
     Route::prefix('jasa')->group(function () {
+        Route::post('{subkategori_id?}', [JasaController::class, 'index']);
         Route::get('{subkategori_id?}', [JasaController::class, 'index']);
         Route::get('detail/{jasa_id}', [JasaController::class, 'show']);
         Route::get('invoice/{paket_id}', [InvoiceController::class, 'index'])->middleware('auth');

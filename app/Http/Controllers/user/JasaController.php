@@ -26,9 +26,11 @@ class JasaController extends Controller
         }
     }
 
-    public function index($subkategori_id = '') {
+    public function index($subkategori_id = '',Request $request) {
         $jasa = Jasa::when($subkategori_id,function($query,$subkategori_id) {
                 return $query->where('subkategori_id', $subkategori_id);
+                })->when($request, function($query, $request){
+                return $query->where('nama','LIKE','%'.$request->input('search').'%');
                 })->get();
         $res = array();
         foreach ($jasa as $key => $item) {
@@ -42,7 +44,8 @@ class JasaController extends Controller
         $data = array(
             'title'=> 'List Jasa',
             'menu' => $this->menu,
-            'jasa' => $res
+            'jasa' => $res,
+            'subkategori_id' => $subkategori_id
         );
         return view('user.jasa.index', $data);
     }

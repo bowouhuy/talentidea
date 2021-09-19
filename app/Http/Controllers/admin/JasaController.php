@@ -91,7 +91,7 @@ class JasaController extends Controller
             $jasa = Jasa::create([
                 'nama' => $request->input('nama'),
                 'subkategori_id' => $request->input('subkategori_id'),
-                'mitra_id' => Auth::user()->id,
+                'mitra_id' => 1,
                 'deskripsi' => $request->input('deskripsi'),
             ]);
         } else {
