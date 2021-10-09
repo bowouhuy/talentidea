@@ -9,16 +9,16 @@
                     <div class="p-3 mini-stats-content">
                         <div class="mb-4">
                             <div class="float-right text-right">
-                                <span class="badge badge-light text-info mt-2 mb-2"> + 11% </span> 
+                                <span class="badge badge-light @if($stats['curr_total_orders'] >= $stats['recent_total_orders']) text-info @else text-danger @endif mt-2 mb-2">@if($stats['curr_total_orders'] >= $stats['recent_total_orders']) + @else - @endif {{round((float)($stats['curr_total_orders']/$stats['recent_total_orders']) * 100)}} %</span> 
                                 <p class="text-white-50">From previous period</p>
                             </div>
                             
-                            <span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">5/8</span>
+                            <span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">{{$stats['curr_total_orders']}}/{{$stats['recent_total_orders']}}</span>
                         </div>
                     </div>
                     <div class="ml-3 mr-3">
                         <div class="bg-white p-3 mini-stats-desc rounded">
-                            <h5 class="float-right mt-0">1758</h5>
+                            <h5 class="float-right mt-0">{{$stats['curr_total_orders']}}</h5>
                             <h6 class="mt-0 mb-3">Orders</h6>
                             <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
                         </div>
@@ -30,16 +30,16 @@
                     <div class="p-3 mini-stats-content">
                         <div class="mb-4">
                             <div class="float-right text-right">
-                                <span class="badge badge-light text-danger mt-2 mb-2"> - 27% </span> 
+                                <span class="badge badge-light @if($stats['curr_total_revenue'] >= $stats['recent_total_revenue']) text-info @else text-danger @endif mt-2 mb-2">  @if($stats['curr_total_revenue'] >= $stats['recent_total_revenue']) + @else - @endif {{round((float)($stats['curr_total_revenue']/$stats['recent_total_revenue']) * 100)}} % </span> 
                                 <p class="text-white-50">From previous period</p>
                             </div>
                             
-                            <span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">2/5</span>
+                            <span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">$stats['curr_total_revenue']/$stats['recent_total_revenue']</span>
                         </div>
                     </div>
                     <div class="ml-3 mr-3">
                         <div class="bg-white p-3 mini-stats-desc rounded">
-                            <h5 class="float-right mt-0">48259</h5>
+                            <h5 class="float-right mt-0">{{number_format($stats['curr_total_revenue'],0,'.','.')}}</h5>
                             <h6 class="mt-0 mb-3">Revenue</h6>
                             <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
                         </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="ml-3 mr-3">
                         <div class="bg-white p-3 mini-stats-desc rounded">
-                            <h5 class="float-right mt-0">$17.5</h5>
+                            <h5 class="float-right mt-0">{{$stats['curr_total_average']}}</h5>
                             <h6 class="mt-0 mb-3">Average Price</h6>
                             <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
                         </div>
@@ -72,16 +72,16 @@
                     <div class="p-3 mini-stats-content">
                         <div class="mb-4">
                             <div class="float-right text-right">
-                                <span class="badge badge-light text-info mt-2 mb-2"> - 89% </span> 
+                                <span class="badge badge-light @if($stats['curr_total_jasa'] >= $stats['recent_total_jasa']) text-info @else text-danger @endif mt-2 mb-2"> @if($stats['curr_total_jasa'] >= $stats['recent_total_jasa']) + @else - @endif {{round((float)($stats['curr_total_jasa']/$stats['recent_total_jasa']) * 100)}} % </span> 
                                 <p class="text-white-50">From previous period</p>
                             </div>
-                            <span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">3/5</span>
+                            <span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">{{$stats['curr_total_jasa']}}/{{$stats['recent_total_jasa']}}</span>
                         </div>
                     </div>
                     <div class="ml-3 mr-3">
                         <div class="bg-white p-3 mini-stats-desc rounded">
-                            <h5 class="float-right mt-0">2048</h5>
-                            <h6 class="mt-0 mb-3">Product Sold</h6>
+                            <h5 class="float-right mt-0">{{$stats['curr_total_jasa']}}</h5>
+                            <h6 class="mt-0 mb-3">Jasa</h6>
                             <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>
                         </div>
                     </div>
@@ -106,11 +106,11 @@
 
                         <div class="row text-center m-t-20">
                             <div class="col-6">
-                                <h5 class="">56241</h5>
-                                <p class="text-muted font-14">Marketplace</p>
+                                <h5 class="">{{$stats['total_transaksi']}}</h5>
+                                <p class="text-muted font-14">Transactions</p>
                             </div>
                             <div class="col-6">
-                                <h5 class="">23651</h5>
+                                <h5 class="">{{number_format($stats['total_income'],0,'.','.')}}</h5>
                                 <p class="text-muted font-14">Total Income</p>
                             </div>
                         </div>
