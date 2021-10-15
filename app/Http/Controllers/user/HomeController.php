@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Jasa;
 use App\Models\Jasaimage;
+use App\Models\Userimages;
+use App\Models\Transaksi;
+use App\Models\Paket;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -46,11 +50,19 @@ class HomeController extends Controller
     }
 
     public function profile() {
+        $user_image = Userimages::where('user_id', Auth::user()->id)->take(1)->first();
+        $transaksi = DB::table('transaksi')
+                    ->join('jasa', 'transaksi.jasa_id', '=', 'jasa.id')
+                    ->join('paket', 'transaksi.paket_id', '=', 'paket.id')
+                    ->select('transaksi.*', 'jasa.nama as nama_jasa', 'paket.nama as nama_paket')
+                    ->where('transaksi.customer_id','=', Auth::user()->id)
+                    ->get();
         $data = array(
             'title'=> 'Profile',
             'menu' => $this->menu,
+            'image' => $user_image->url,
+            'transaksi' => $transaksi
         );
-
         return view('user.home.profile', $data);
     }
 }

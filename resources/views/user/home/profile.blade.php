@@ -26,143 +26,58 @@
             <div class="col-xl-4 col-md-6">
                 <div class="card product-sales">
                     <div class="card-body">
-                        <h5 class="mt-0 mb-4"><i class="ion-monitor h4 mr-2 text-primary"></i> Computers</h5>
+                        <h5 class="mt-0 mb-4"><i class="ion-monitor h4 mr-2 text-primary"></i> Profile</h5>
                         <div class="row align-items-center mb-4">
-                            <div class="col-6">
-                                <p class="text-muted">This Month Sales</p>
-                                <h4><sup class="mr-1"><small>$</small></sup>14,352</h4>
-                            </div>
-                            <div class="col-6">
-                                <div class="text-center">
-                                    <span class="peity-pie" data-peity='{ "fill": ["#655be6", "#f2f2f2"]}' data-width="60" data-height="60">70/100</span>
-                                </div>
+                            <div class="col-12">
+                            <img src="{{asset('images/user_image/'.$image)}}" class="rounded-circle mx-auto d-block" alt="...">
+                            <h4 class="text-center">{{Auth::user()->username}}</h4>
+                            <div class="text-muted text-center">{{Auth::user()->email}}</div>
                             </div>
                         </div>
-                        <div>
-                            <p class="text-muted mb-3">Top Cities Sales</p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="text-muted mb-2">Los Angeles : <b class="text-dark">$ 8,235</b></p>
-                                </div>
-                                <div class="col-6">
-                                    <p class="text-muted mb-2">San Francisco : <b class="text-dark">$ 7,256</b></p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
             <div class="col-xl-8 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">Latest Transactions</h4>
+                        <h4 class="mt-0 header-title">Transaksi</h4>
                         <div class="table-responsive mt-4">
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th scope="col">(#) Id</th>
+                                        <th scope="col">No</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col" colspan="2">Amount</th>
+                                        <th scope="col" colspan="2">Bukti Bayar</th>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <!-- {{$i=0}} -->
+                                @foreach ($transaksi as $index => $data)
                                     <tr>
-                                        <th scope="row">#16252</th>
+                                        <th scope="row">{{$index+1}}</th>
                                         <td>
-                                            <div>
-                                                <img src="assets/images/users/avatar-2.jpg" alt="" class="thumb-sm rounded-circle mr-2"> Rafael Reardon
-                                            </div>
+                                        {{$data->nama_paket}}
+                                        <div class="text-muted">{{$data->nama_jasa}}</div>
                                         </td>
-                                        <td>14/10/2018</td>
-                                        <td><span class="badge badge-success">Delivered</span></td>
-                                        <td>$80</td>
-                                        <td>1</td>
-                                        <td>$80</td>
+                                        <td>{{$data->tanggal_transaksi}}</td>
+                                        <td><span class="badge badge-success">{{$data->status}}</span></td>
+                                        <td>{{$data->amount}}</td>
                                         <td>
                                             <div>
-                                                <a href="#" class="btn btn-primary btn-sm">Invoice</a>
+                                                <!-- <img id="bukti" src="{{asset('images/user_image/'.$image)}}" alt="" srcset=""> -->
+                                                <div class="btn btn-primary btn-sm" id="bukti" alt="{{asset('images/invoice/'.$data->bukti_transaksi)}}">Bukti Bayar</div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">#16253</th>
-                                        <td>
-                                            <div>
-                                                <img src="assets/images/users/avatar-3.jpg" alt="" class="thumb-sm rounded-circle mr-2"> Thomas Hirsch
-                                            </div>
-                                        </td>
-                                        <td>15/10/2018</td>
-                                        <td><span class="badge badge-warning">Pending</span></td>
-                                        <td>$76</td>
-                                        <td>2</td>
-                                        <td>$152</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="btn btn-primary btn-sm">Invoice</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">#16254</th>
-                                        <td>
-                                            <div>
-                                                <img src="assets/images/users/avatar-4.jpg" alt="" class="thumb-sm rounded-circle mr-2"> Archer Desaillly
-                                            </div>
-                                        </td>
-                                        <td>15/10/2018</td>
-                                        <td><span class="badge badge-success">Delivered</span></td>
-                                        <td>$86</td>
-                                        <td>1</td>
-                                        <td>$86</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="btn btn-primary btn-sm">Invoice</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">#16255</th>
-                                        <td>
-                                            <div>
-                                                <img src="assets/images/users/avatar-5.jpg" alt="" class="thumb-sm rounded-circle mr-2"> Michael Flannery
-                                            </div>
-                                        </td>
-                                        <td>16/10/2018</td>
-                                        <td><span class="badge badge-danger">Cancel</span></td>
-                                        <td>$82</td>
-                                        <td>2</td>
-                                        <td>$164</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="btn btn-primary btn-sm">Invoice</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">#16256</th>
-                                        <td>
-                                            <div>
-                                                <img src="assets/images/users/avatar-6.jpg" alt="" class="thumb-sm rounded-circle mr-2"> Jamie Fishbourne
-                                            </div>
-                                        </td>
-                                        <td>17/10/2018</td>
-                                        <td><span class="badge badge-success">Delivered</span></td>
-                                        <td>$84</td>
-                                        <td>2</td>
-                                        <td>$84</td>
-                                        <td>
-                                            <div>
-                                                <a href="#" class="btn btn-primary btn-sm">Invoice</a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>
