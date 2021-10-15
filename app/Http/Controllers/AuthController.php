@@ -57,7 +57,11 @@ class AuthController extends Controller
             Session::flash('success', 'Berhasil Login');
             if(substr(session('link'), -8) === "register"){
                 return redirect('/');
-            }else{
+            }
+            else if(substr(session('link'), -5) === "login"){
+                return redirect('/');
+            }
+            else{
                 return redirect(session('link'));
             }
   
