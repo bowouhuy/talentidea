@@ -11,6 +11,8 @@ use App\Http\Controllers\user\InvoiceController;
 /* ADMIN */
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\JasaController as AdminJasaController;
+use App\Http\Controllers\admin\KategoriController as AdminKategoriController;
+use App\Http\Controllers\admin\SubKategoriController as AdminSubKategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,28 @@ Route::prefix('admin')->group(function () {
         Route::get('delete_jasa/{jasa_id}', [AdminJasaController::class, 'delete_jasa']);
         Route::get('delete_paket/{paket_id}', [AdminJasaController::class, 'delete_paket']);
     });
+    Route::prefix('kategori')-> group(function (){
+        Route::get('/',[AdminKategoriController::class,'index']);
+        Route::get('list',[AdminKategoriController::class,'list']);
+        Route::post('form_kategori_store', [AdminKategoriController::class, 'form_kategori_store']);
+        Route::get('create',[AdminKategoriController::class,'create']);
+        Route::get('delete_kategori/{kategori_id}', [AdminKategoriController::class, 'delete_kategori']);
+        Route::get('form_kategori/{kategori_id?}', [AdminKategoriController::class, 'form_kategori']);
+        Route::get('edit/{id}',[AdminKategoriController::class,'edit']);
+        Route::post('update/{id}',[AdminKategoriController::class, 'update']);
+
+
+    });
+    Route::prefix('subkategori')-> group(function (){
+        Route::get('/',[AdminSubKategoriController::class,'index']);
+        Route::get('list',[AdminSubKategoriController::class,'list']);
+        Route::get('delete_subkategori/{subkategori_id}',[AdminSubKategoriController::class , 'delete_subkategori']);
+        Route::post('form_subkategori_store', [AdminSubKategoriController::class, 'form_subkategori_store']);
+        Route::get('create',[AdminSubKategoriController::class,'create']);
+        Route::get('edit/{id}',[AdminSubKategoriController::class,'edit']);
+        Route::post('update/{id}',[AdminSubKategoriController::class, 'update']);
+
+    });
 });
 
 /* ROUTE AUTH */
@@ -67,6 +91,7 @@ Route::get('/register', [AuthController::class, 'register']);
 Route::post('loginUser', [AuthController::class, 'loginUser']);
 Route::post('createUser', [AuthController::class, 'createUser']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 
 /* ROUTE HELPER */
 Route::prefix('helper')->group(function () {

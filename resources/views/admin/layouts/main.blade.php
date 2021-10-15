@@ -121,12 +121,12 @@
                             </li>
                             <li class="menu-title">Basis Data</li>
                             <li>
-                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                <a href="{{url('admin/kategori')}}" class=" waves-effect">
                                     <i class="dripicons-view-list-large"></i><span> Kategori </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                <a href="{{url('admin/subkategori')}}" class=" waves-effect">
                                     <i class="dripicons-view-list"></i><span> Sub Kategori </span>
                                 </a>
                             </li>

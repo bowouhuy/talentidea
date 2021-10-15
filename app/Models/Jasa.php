@@ -18,6 +18,8 @@ class Jasa extends Model
         'rating',
     ];
 
+    protected $guarded = [];
+
     public function mitra(){
         return $this->belongsTo('App\Models\User', 'mitra_id', 'id');
     }

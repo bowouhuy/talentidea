@@ -26,7 +26,7 @@ class JasaController extends Controller
         }
     }
 
-    public function index($subkategori_id = '',Request $request) {
+    public function index($subkategori_id,Request $request) {
         $jasa = Jasa::when($subkategori_id,function($query,$subkategori_id) {
                 return $query->where('subkategori_id', $subkategori_id);
                 })->when($request, function($query, $request){
