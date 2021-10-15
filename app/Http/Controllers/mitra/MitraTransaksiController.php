@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\mitra;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TransaksiController extends Controller
+class MitraTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**

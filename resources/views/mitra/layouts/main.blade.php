@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Talentidea | Internal</title>
+        <title>Talentidea | Mitra</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -94,42 +94,16 @@
                         <ul class="metismenu" id="side-menu">
                             <li class="menu-title">Main</li>
                             <li>
-                                <a href="{{url('admin')}}" class=" waves-effect">
-                                    <i class="dripicons-meter"></i><span> Dashboard </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                <a href="{{url('mitra/jasa')}}" class=" waves-effect">
                                     <i class="dripicons-briefcase"></i><span> Jasa </span>
                                 </a>
                             </li>
-                            <li class="menu-title">Monitoring</li>
                             <li>
-                                <a href="{{url('admin/transaksi')}}" class=" waves-effect">
+                                <a href="{{url('mitra/jasa')}}" class=" waves-effect">
                                     <i class="dripicons-swap"></i><span> Transaksi </span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
-                                    <i class="dripicons-user"></i><span> Mitra </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
-                                    <i class="dripicons-user-group"></i><span> Customer </span>
-                                </a>
-                            </li>
-                            <li class="menu-title">Basis Data</li>
-                            <li>
-                                <a href="{{url('admin/kategori')}}" class=" waves-effect">
-                                    <i class="dripicons-view-list-large"></i><span> Kategori </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('admin/subkategori')}}" class=" waves-effect">
-                                    <i class="dripicons-view-list"></i><span> Sub Kategori </span>
-                                </a>
-                            </li>
+                            
                             <!-- <li>
                                 <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-message"></i><span> Basis Data <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                                 <ul class="submenu">

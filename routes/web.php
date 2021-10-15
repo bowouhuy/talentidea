@@ -13,6 +13,10 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\JasaController as AdminJasaController;
 use App\Http\Controllers\admin\KategoriController as AdminKategoriController;
 use App\Http\Controllers\admin\SubKategoriController as AdminSubKategoriController;
+use App\Http\Controllers\admin\TransaksiController as AdminTransaksiController;
+/* ADMIN */
+use App\Http\Controllers\mitra\DashboardMitraController;
+use App\Http\Controllers\mitra\MitraJasaController as MitraJasaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,8 +87,28 @@ Route::prefix('admin')->group(function () {
         Route::post('update/{id}',[AdminSubKategoriController::class, 'update']);
 
     });
+    Route::prefix('transaksi')->group(function () {
+        Route::get('/', [AdminTransaksiController::class, 'index']);
+    });
 });
 
+
+Route::prefix('mitra')->group(function () {
+    Route::get('/', [DashboardMitraController::class, 'index']);
+    Route::prefix('jasa')->group(function () {
+        Route::get('/', [MitraJasaController::class, 'index']);
+        Route::get('list', [MitraJasaController::class, 'list']);
+        Route::get('form_jasa/{jasa_id?}', [MitraJasaController::class, 'form_jasa']);
+        Route::post('form_jasa_store', [MitraJasaController::class, 'form_jasa_store']);
+        Route::get('form_images/{jasa_id}', [MitraJasaController::class, 'form_images']);
+        Route::post('form_images_store', [MitraJasaController::class, 'form_images_store']);
+        Route::get('form_paket/{jasa_id}', [MitraJasaController::class, 'form_paket']);
+        Route::post('form_paket_store', [MitraJasaController::class, 'form_paket_store']);
+        Route::get('delete_files/{filename}', [MitraJasaController::class, 'delete_files']);
+        Route::get('delete_jasa/{jasa_id}', [MitraJasaController::class, 'delete_jasa']);
+        Route::get('delete_paket/{paket_id}', [MitraJasaController::class, 'delete_paket']);
+    });
+});
 /* ROUTE AUTH */
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register']);

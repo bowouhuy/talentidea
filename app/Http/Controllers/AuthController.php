@@ -55,7 +55,10 @@ class AuthController extends Controller
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
             //Login Success
             Session::flash('success', 'Berhasil Login');
-            if(substr(session('link'), -8) === "register"){
+            if (Auth::user()->role =2){
+                return redirect('/mitra');
+            }
+            else if(substr(session('link'), -8) === "register"){
                 return redirect('/');
             }
             else if(substr(session('link'), -5) === "login"){
