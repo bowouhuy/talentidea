@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\mitra;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class TransaksiController extends Controller
             'title'=> 'Transaksi',
         );
 
-        return view('admin.transaksi.index', $data);
+        return view('mitra.transaksi.index', $data);
     }
 
     public function list() {
@@ -29,7 +29,7 @@ class TransaksiController extends Controller
         //             ->join('jasa','transaksi.jasa_id','=','jasa.id')
         //             ->select('transaksi.*','jasa.nama AS nama_jasa','jasa.mitra_id')
         //             ->get();
-        $transaksi = Transaksi::with('jasa')->get();
+        $transaksi = Transaksi::with('jasa')->where('mitra_id','=', Auth::user()->id)->get();
         $data = array();
         foreach ($transaksi as $key => $item) {
             $jasa_image = Jasaimage::where('jasa_id', $item->jasa_id)->take(1)->first();

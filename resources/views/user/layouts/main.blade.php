@@ -24,7 +24,9 @@
         <link href="{{ asset('user_template/assets/css/icons.css')}} " rel="stylesheet" type="text/css" />
         <link href="{{ asset('user_template/assets/css/style.css')}} " rel="stylesheet" type="text/css" />
         <link href="{{ asset('user_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
-        
+        <link href="{{ asset('user_template/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.css') }}">
+        <link href="{{ asset('admin_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
     </head>
 
     <body>

@@ -8,6 +8,7 @@ use App\Http\Controllers\HelperController;
 use App\Http\Controllers\user\HomeController;
 use App\Http\Controllers\user\JasaController;
 use App\Http\Controllers\user\InvoiceController;
+use App\Http\Controllers\user\TransaksiController as UserTransaksiController;
 /* ADMIN */
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\JasaController as AdminJasaController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\admin\TransaksiController as AdminTransaksiController;
 /* ADMIN */
 use App\Http\Controllers\mitra\DashboardMitraController;
 use App\Http\Controllers\mitra\MitraJasaController as MitraJasaController;
+use App\Http\Controllers\mitra\TransaksiController as MitraTransaksiController;
+use App\Http\Controllers\mitra\OrderController as MitraOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +50,7 @@ Route::prefix('/')->group(function () {
         Route::post('store', [InvoiceController::class, 'store']);
         Route::get('delete_files/{filename}', [InvoiceController::class, 'delete_files']);
     });
+    Route::get('profile/list',[UserTransaksiController::class,'list']);
 });
 
 /* ROUTE ADMIN */
@@ -109,6 +113,15 @@ Route::prefix('mitra')->group(function () {
         Route::get('delete_files/{filename}', [MitraJasaController::class, 'delete_files']);
         Route::get('delete_jasa/{jasa_id}', [MitraJasaController::class, 'delete_jasa']);
         Route::get('delete_paket/{paket_id}', [MitraJasaController::class, 'delete_paket']);
+    });
+    Route::prefix('transaksi')->group(function () {
+        Route::get('/', [MitraTransaksiController::class, 'index']);
+        Route::get('list',[MitraTransaksiController::class,'list']);
+    });
+    Route::prefix('order')->group(function () {
+        Route::get('/', [MitraOrderController::class, 'index']);
+        Route::get('list',[MitraOrderController::class,'list']);
+        Route::post('form_order_store', [MitraOrderController::class, 'form_order_store']);
     });
 });
 /* ROUTE AUTH */

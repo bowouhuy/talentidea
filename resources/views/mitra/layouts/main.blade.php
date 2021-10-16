@@ -99,8 +99,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('mitra/jasa')}}" class=" waves-effect">
+                                <a href="{{url('mitra/transaksi')}}" class=" waves-effect">
                                     <i class="dripicons-swap"></i><span> Transaksi </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('mitra/order')}}" class=" waves-effect">
+                                    <i class="dripicons-swap"></i><span> Order </span>
                                 </a>
                             </li>
                             

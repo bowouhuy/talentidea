@@ -16,3 +16,7 @@
 <!-- App js -->
 <script src="{{ asset('user_template/assets/pages/dashboard.js')}} "></script>
 <script src="{{ asset('user_template/assets/js/app.js')}} "></script>
+
+<!-- Datatable -->
+<script src="{{asset('admin_template/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin_template/assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>

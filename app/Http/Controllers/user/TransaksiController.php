@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,21 +15,12 @@ use App\Models\User;
 
 class TransaksiController extends Controller
 {
-    public function index()
-    {
-        $data = array(
-            'title'=> 'Transaksi',
-        );
-
-        return view('admin.transaksi.index', $data);
-    }
-
     public function list() {
         // $transaksi = DB::table('transaksi')
         //             ->join('jasa','transaksi.jasa_id','=','jasa.id')
         //             ->select('transaksi.*','jasa.nama AS nama_jasa','jasa.mitra_id')
         //             ->get();
-        $transaksi = Transaksi::with('jasa')->get();
+        $transaksi = Transaksi::with('jasa')->where('customer_id','=', Auth::user()->id)->get();
         $data = array();
         foreach ($transaksi as $key => $item) {
             $jasa_image = Jasaimage::where('jasa_id', $item->jasa_id)->take(1)->first();
@@ -45,7 +36,6 @@ class TransaksiController extends Controller
                 $data[$key]['nama_mitra'] = $mitra->first_name.' '.$mitra->last_name;
             }
         }
-        // dd($data);
         return DataTables::of($data)
             ->addColumn('jasa_image', function($row){
                 if ($row->image){
@@ -65,52 +55,12 @@ class TransaksiController extends Controller
                 return '<div class="text-center">
                 <button onclick=confirm_transaksi("'.asset('images/invoice/').'/'.$row->bukti_transaksi.'",'.$row->id.') 
                 class="btn btn-sm btn-success mr-1"><b><i class="fa fa-check mr-1"></i>
-                Confirm
+                View
                 </b></a>
                 </div>
                 ';
             })
             ->rawColumns(['jasa_image','status_transaksi','action'])
             ->toJson();
-    }
-
-    public function store(Request $request)
-    {
-        $transaksi_id = $request->input('confirm_id');
-
-        $transaksi = Transaksi::find($transaksi_id);
-        $transaksi->status = 'paid';
-        
-        if ($transaksi->save()){
-            return redirect('admin/transaksi');
-        }
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
