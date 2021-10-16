@@ -110,12 +110,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                <a href="{{url('admin/mitra')}}" class=" waves-effect">
                                     <i class="dripicons-user"></i><span> Mitra </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/jasa')}}" class=" waves-effect">
+                                <a href="{{url('admin/customer')}}" class=" waves-effect">
                                     <i class="dripicons-user-group"></i><span> Customer </span>
                                 </a>
                             </li>
