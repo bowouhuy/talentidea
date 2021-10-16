@@ -14,6 +14,9 @@ use App\Http\Controllers\admin\JasaController as AdminJasaController;
 use App\Http\Controllers\admin\KategoriController as AdminKategoriController;
 use App\Http\Controllers\admin\SubKategoriController as AdminSubKategoriController;
 use App\Http\Controllers\admin\TransaksiController as AdminTransaksiController;
+use App\Http\Controllers\admin\MitraController as AdminMitraController;
+use App\Http\Controllers\admin\CustomerController as AdminCustomerController;
+
 /* ADMIN */
 use App\Http\Controllers\mitra\DashboardMitraController;
 use App\Http\Controllers\mitra\MitraJasaController as MitraJasaController;
@@ -91,6 +94,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [AdminTransaksiController::class, 'index']);
         Route::get('list',[AdminTransaksiController::class,'list']);
         Route::post('store',[AdminTransaksiController::class,'store']);
+    });
+    Route::prefix('mitra')->group(function () {
+        Route::get('/', [AdminMitraController::class, 'index']);
+        Route::get('list',[AdminMitraController::class,'list']);
+    });
+    Route::prefix('customer')->group(function () {
+        Route::get('/', [AdminCustomerController::class, 'index']);
+        Route::get('list',[AdminCustomerController::class,'list']);
     });
 });
 
