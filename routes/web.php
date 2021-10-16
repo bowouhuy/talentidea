@@ -89,6 +89,8 @@ Route::prefix('admin')->group(function () {
     });
     Route::prefix('transaksi')->group(function () {
         Route::get('/', [AdminTransaksiController::class, 'index']);
+        Route::get('list',[AdminTransaksiController::class,'list']);
+        Route::post('store',[AdminTransaksiController::class,'store']);
     });
 });
 

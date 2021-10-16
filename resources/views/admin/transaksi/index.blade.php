@@ -7,16 +7,17 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-md-6"><h4 class="mt-0 header-title">List {{ $title }}</h4></div>
-                    <div class="col-md-6 text-right"><a href="{{url('mitra/jasa/form_jasa')}}" class="btn btn-primary text-right px-5"><i class="fa fa-plus mr-1"></i> Tambah Data </a></div>
                 </div>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th class="text-center">id</th>
-                            <!-- <th>Image</th> -->
+                            <th>Kode Invoice</th>
                             <th class="text-center">Nama Jasa</th>
-                            <th class="text-center">Rating</th>
+                            <th>Image</th>
+                            <th class="text-center">Tanggal</th>
                             <th class="text-center">Mitra</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -28,6 +29,32 @@
         </div>
     </div>
 </div>
+<!-- MODAL -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="show-image">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form action="{{url('admin/transaksi/store')}}" method="post">
+                @csrf
+                    <input type="hidden" name="confirm_id">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{asset('admin_template/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -40,19 +67,28 @@
             processing: true,
             serverSide: true,
             autoWidth: false,
-            ajax: "{{ url('mitra/jasa/list') }}",
+            ajax: "{{ url('admin/transaksi/list') }}",
             "order": [[ 0, "desc" ]],
             columns: [
                 {data: 'id', name: 'id'},
-                // {data: 'jasa_image', name: 'jasa_image'},
-                {data: 'nama', name: 'nama'},
-                {data: 'rating', name: 'rating'},
+                {data: 'kode_invoice', name: 'kode_invoice'},
+                {data: 'jasa.nama', name: 'jasa.nama'},
+                {data: 'jasa_image', name: 'jasa_image'},
+                {data: 'tanggal_transaksi', name: 'tanggal_transaksi'},
                 {data: 'nama_mitra', name: 'nama_mitra'},
+                {data: 'status_transaksi', name: 'status_transaksi'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
     });
 
+    function confirm_transaksi(image_url, id_transaksi){
+        console.log(image_url)
+        console.log(id_transaksi)
+        $('.show-image').html('<img src='+ image_url +' class="rounded" width="100%">')
+        $('[name="confirm_id"]').val(id_transaksi); 
+        $('#imageModal').modal('show'); 
+    }
     function delete_jasa(jasa_id){
         swal({
             title: 'Are you sure?',

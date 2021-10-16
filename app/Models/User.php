@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function jasa(){
         return $this->hasOne('App\Models\Jasa', 'mitra_id');
     }
+
+    public function jasaCustomer(){
+        return $this->hasOne('App\Models\Jasa', 'customer_id');
+    }
 }

@@ -24,7 +24,15 @@ class Jasa extends Model
         return $this->belongsTo('App\Models\User', 'mitra_id', 'id');
     }
 
+    public function customer(){
+        return $this->belongsTo('App\Models\User', 'customer_id', 'id');
+    }
+
     public function paket(){
         return $this->hasMany('App\Models\Paket', 'jasa_id');
+    }
+
+    public function transaksi(){
+        return $this->hasOne('App\Models\Transaksi', 'jasa_id');
     }
 }

@@ -22,4 +22,8 @@ class Transaksi extends Model
         'bukti_transaksi',
         'status',
     ];
+
+    public function jasa(){
+        return $this->belongsTo('App\Models\Jasa', 'jasa_id', 'id');
+    }
 }
