@@ -12,6 +12,8 @@
         <!-- App Icons -->
         <link rel="shortcut icon" href="{{ asset('admin_template/assets/images/favicon.ico') }}">
 
+        <link href="{{ asset('user_template/assets/plugins/dropzone/dist/dropzone.css')}} " rel="stylesheet" type="text/css">
+
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/morris/morris.css') }}">
 

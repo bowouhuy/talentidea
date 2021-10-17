@@ -56,7 +56,34 @@
     </div>
 </div> -->
 
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Pembayaran <small class="text-warning">( *Only 1 file to upload)</small></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/mitra/order/form_order_store" class="dropzone" id="dropzone" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input name="transaksi_id" type="hidden" value="'.$row->id.'">
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple="multiple">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" id="btn-submit" class="btn btn-primary">Send Files</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('admin_template/assets/plugins/dropzone/dist/dropzone.js')}} "></script>
 <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{asset('admin_template/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin_template/assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
@@ -79,81 +106,60 @@
             ]
         });
     });
-
-    function confirm_transaksi(image_url, id_transaksi){
-        console.log(image_url)
-        console.log(id_transaksi)
-        $('.show-image').html('<img src='+ image_url +' class="rounded" width="100%">')
-        $('[name="confirm_id"]').val(id_transaksi); 
-        $('#imageModal').modal('show'); 
-    }
-    function upload(id_transaksi){
-        console.log(id_transaksi)
-        $('[name="transaksi_id"]').val(id_transaksi); 
-        $('#imageModal').modal('show'); 
-    }
-    function delete_jasa(jasa_id){
-        swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result) {
-                $.ajax({
-                    type: 'GET',
-                    url: '{{ url("mitra/jasa/delete_jasa")}}' + '/' + jasa_id,
-                    success: function (data){
-                        swal(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                        ).then(()=> {
-                            window.location.replace("{{ url('mitra/jasa')}}")
-                        })
-                    },
-                    error: function(e) {
-                        console.log(e);
-                    }
-                });
-            }
-        })
-    };
+    
+    Dropzone.autoDiscover = false;
 
     var myDropzone = new Dropzone(".dropzone", { 
         maxFilesize: 12,
+        uploadMultiple: false, 
+        maxFiles: 1,
+        // renameFile: function(file) {
+        //     var dt = new Date();
+        //     var time = dt.getTime();
+        //     return time+file.name;
+        // },
+        parallelUploads: 1,
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
         addRemoveLinks: true,
+        autoProcessQueue: false,
         timeout: 50000,
         removedfile: function(file) 
         {
             var name = file.name;
             $.ajax({
                 type: 'GET',
-                url: '{{ url("admin/jasa/delete_files")}}' + '/' + name,
+                url: '{{ url("mitra/order/delete_files")}}' + '/' + name,
                 success: function (data){
                     console.log("File has been successfully removed!!");
                 },
                 error: function(e) {
                     console.log(e);
-                }
-            });
-            var fileRef;
-            return (fileRef = file.previewElement) != null ? 
-            fileRef.parentNode.removeChild(file.previewElement) : void 0;
+                }});
+                var fileRef;
+                return (fileRef = file.previewElement) != null ? 
+                fileRef.parentNode.removeChild(file.previewElement) : void 0;
         },
         success: function(file, response) 
         {
-            console.log(response)
+            swal({
+                title: 'Success!',
+                text: 'Konfirmasi Pembayaran Berhasil!',
+                type: 'success',
+                showConfirmButton: false
+            }).then(
+                setTimeout(function () {
+                    window.location.replace("{{ url('/')}}")
+                }, 2000)
+            )
         },
         error: function(file, response)
         {
             return false;
-        },
-        
+        }
+    });
+
+    $('#btn-submit').on('click',function(){
+        myDropzone.processQueue();
     });
 </script>
 
