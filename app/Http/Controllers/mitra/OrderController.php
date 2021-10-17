@@ -64,35 +64,11 @@ class OrderController extends Controller
             })
             ->addColumn('action', function($row){
                 return '<div class="text-center">
-                <button onclick=upload('.$row->id.') 
-                class="btn btn-sm btn-warning mr-1"><b><i class="fa fa-check mr-1"></i>
-                Upload Order
+                <button class="btn btn-primary waves-effect waves-light upload" data-toggle="modal" data-target="#uploadModal">Upload Order</button>
                 </b></a>
-                </div>
-                <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                            <form action="'.url('/').'/mitra/order/form_order_store" class="dropzone" id="dropzone" method="post">
-                            
-                                        <input type="hidden" name="transaksi_id" value="'.$row->id.'">
-                                            <div class="fallback">
-                                                <input name="file" type="file" multiple="multiple">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Confirm</button>
-                                            </form>
-                            </div>
-                            <div class="modal-footer">
-                             
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+
+                
                 ';
             })
             ->rawColumns(['jasa_image','status_transaksi','action'])
@@ -117,7 +93,7 @@ class OrderController extends Controller
         $file = $request->file('file');
         $filename = $file->getClientOriginalName();
         $file->move(public_path('orderfile'),$filename);
-        return $request;
+        // return $request;
         /** Insert Jasa Images */
         $orderfile = Orderfile::create([
             'transaksi_id' => $transaksi_id,
@@ -126,6 +102,16 @@ class OrderController extends Controller
         ]);
         if ($orderfile->save()){
             return redirect('mitra/order/');
+        }
+    }
+
+    public function delete_files($filename){
+        if(File::exists(public_path('orderfile/'. $filename))){
+            File::delete(public_path('orderfile/'. $filename));
+            /*
+                Delete Multiple File like this way
+                File::delete(['upload/test.png', 'upload/test2.png']);
+            */
         }
     }
 

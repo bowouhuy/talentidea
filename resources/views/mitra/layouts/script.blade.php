@@ -24,4 +24,4 @@
 <script src="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
 
 <!-- Dropzone -->
-<!-- <script src="{{ asset('admin_template/assets/plugins/dropzone/dist/dropzone.js')}} "></script> -->
+<script src="{{ asset('admin_template/assets/plugins/dropzone/dist/dropzone.js')}} "></script>

@@ -133,6 +133,7 @@ Route::prefix('mitra')->group(function () {
         Route::get('/', [MitraOrderController::class, 'index']);
         Route::get('list',[MitraOrderController::class,'list']);
         Route::post('form_order_store', [MitraOrderController::class, 'form_order_store']);
+        Route::get('delete_files/{filename}', [MitraOrderController::class, 'delete_files']);
     });
 });
 /* ROUTE AUTH */
