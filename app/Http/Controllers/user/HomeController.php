@@ -60,7 +60,7 @@ class HomeController extends Controller
         $data = array(
             'title'=> 'Profile',
             'menu' => $this->menu,
-            'image' => $user_image->url,
+            // 'image' => $user_image->url,
             'transaksi' => $transaksi
         );
         return view('user.home.profile', $data);

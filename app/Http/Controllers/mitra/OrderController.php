@@ -40,10 +40,10 @@ class OrderController extends Controller
             }
         }
         foreach ($transaksi as $key => $item) {
-            $mitra = User::where('id', $item->jasa->mitra_id)->take(1)->first();
+            $mitra = User::where('id', $item->customer_id)->take(1)->first();
             $data[$key] = $item;
             if ($mitra){
-                $data[$key]['nama_mitra'] = $mitra->first_name.' '.$mitra->last_name;
+                $data[$key]['nama_customer'] = $mitra->first_name.' '.$mitra->last_name;
             }
         }
         // dd($data);
@@ -64,6 +64,7 @@ class OrderController extends Controller
             })
             ->addColumn('action', function($row){
                 return '<div class="text-center">
+                <input name="row_id" id="row_id" type="hidden" value="'.$row->id.'">
                 <button class="btn btn-primary waves-effect waves-light upload" data-toggle="modal" data-target="#uploadModal">Upload Order</button>
                 </b></a>
                 

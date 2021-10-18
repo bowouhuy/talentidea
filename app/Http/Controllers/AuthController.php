@@ -21,12 +21,19 @@ class AuthController extends Controller
     }
 
     public function createUser(Request $request){
+        // dd($request->mitra);
         $request->validate([
             'first_name' => 'required',
             'username' => 'required',
             'email' => 'required',
             'password' => 'required'
         ]);
+
+        if(isset($request->mitra)){
+            $role=2;
+        }else{
+            $role=1;
+        }
 
         User::create([
             'first_name' => $request->first_name,
@@ -35,6 +42,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'register_tanggal' => \Carbon\Carbon::now(), # new \Datetime()
+            'role' => $role
         ]);
         return redirect('/login')
         ->with('success', 'Project created successfully.');
@@ -55,8 +63,11 @@ class AuthController extends Controller
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
             //Login Success
             Session::flash('success', 'Berhasil Login');
-            if (Auth::user()->role =2){
+            // dd(Auth::user()->role);
+            if (Auth::user()->role ===2){
                 return redirect('/mitra');
+            }else if(Auth::user()->role ===0){
+                return redirect('/admin');
             }
             else if(substr(session('link'), -8) === "register"){
                 return redirect('/');

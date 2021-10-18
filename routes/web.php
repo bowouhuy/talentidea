@@ -54,6 +54,8 @@ Route::prefix('/')->group(function () {
         Route::get('delete_files/{filename}', [InvoiceController::class, 'delete_files']);
     });
     Route::get('profile/list',[UserTransaksiController::class,'list']);
+    Route::get('profile/order',[UserTransaksiController::class,'listorder']);
+    Route::get('profile/order/download',[UserTransaksiController::class,'getDownload']);
 });
 
 /* ROUTE ADMIN */

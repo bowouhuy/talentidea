@@ -13,6 +13,7 @@
                         <tr>
                             <th class="text-center">id</th>
                             <th class="text-center">Nama Jasa</th>
+                            <th class="text-center">Nama Customer</th>
                             <th class="text-center">Tanggal</th>
                             <th class="text-center">Status Transaksi</th>
                             <th class="text-center">Action</th>
@@ -68,7 +69,7 @@
                             <div class="modal-body">
                                 <form action="/mitra/order/form_order_store" class="dropzone" id="dropzone" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <input name="transaksi_id" type="hidden" value="'.$row->id.'">
+                                <input name="transaksi_id" id="transaksi_id" type="hidden" value="">
                                     <div class="fallback">
                                         <input name="file" type="file" multiple="multiple">
                                     </div>
@@ -100,6 +101,7 @@
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'jasa.nama', name: 'jasa.nama'},
+                {data: 'nama_customer', name: 'nama_customer'},
                 {data: 'tanggal_transaksi', name: 'tanggal_transaksi'},
                 {data: 'status_transaksi', name: 'status_transaksi'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -148,7 +150,7 @@
                 showConfirmButton: false
             }).then(
                 setTimeout(function () {
-                    window.location.replace("{{ url('/')}}")
+                    window.location.replace("{{ url('/mitra/order/')}}")
                 }, 2000)
             )
         },
@@ -159,6 +161,8 @@
     });
 
     $('#btn-submit').on('click',function(){
+        var id = document.getElementById('row_id').value;
+        document.getElementById("transaksi_id").setAttribute('value',id);
         myDropzone.processQueue();
     });
 </script>

@@ -29,7 +29,7 @@
                         <h5 class="mt-0 mb-4"><i class="ion-monitor h4 mr-2 text-primary"></i> Profile</h5>
                         <div class="row align-items-center mb-4">
                             <div class="col-12">
-                                <img src="{{asset('images/user_image/'.$image)}}" class="rounded-circle mx-auto d-block" alt="...">
+                                <img src="{{asset('images/user_image/sample.png')}}" class="rounded-circle mx-auto d-block" alt="...">
                                 <h4 class="text-center">{{Auth::user()->username}}</h4>
                                 <div class="text-muted text-center">{{Auth::user()->email}}</div>
                             </div>
@@ -61,6 +61,23 @@
                             </table>
                         </div>
                         <h4 class="mt-3 header-title">Order</h4>
+                        <div class="table-responsive mt-4">
+                            <table id="datatable2" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                    <th class="text-center">id</th>
+                                    <th class="text-center">Nama Jasa</th>
+                                    <th class="text-center">Nama Mitra</th>
+                                    <th class="text-center">Tanggal</th>
+                                    <th class="text-center">Status Transaksi</th>
+                                    <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Datatable -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -118,6 +135,22 @@
                 {data: 'jasa_image', name: 'jasa_image'},
                 {data: 'tanggal_transaksi', name: 'tanggal_transaksi'},
                 {data: 'nama_mitra', name: 'nama_mitra'},
+                {data: 'status_transaksi', name: 'status_transaksi'},
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+            ]
+        });
+
+        var dataTable = $('#datatable2').DataTable({
+            processing: true,
+            serverSide: true,
+            autoWidth: false,
+            ajax: "{{ url('profile/order') }}",
+            "order": [[ 0, "desc" ]],
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'jasa.nama', name: 'jasa.nama'},
+                {data: 'nama_customer', name: 'nama_customer'},
+                {data: 'tanggal_transaksi', name: 'tanggal_transaksi'},
                 {data: 'status_transaksi', name: 'status_transaksi'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]

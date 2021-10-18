@@ -76,6 +76,11 @@
                                 <input type="password" class="form-control" id="userpassword" name="password" placeholder="Enter password">
                             </div>
 
+                            <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customControlInline" name="mitra" value="2">
+                                        <label class="custom-control-label" for="customControlInline">Daftar sebagai mitra</label>
+                            </div>
+
                             <div class="form-group row m-t-20">
                                 <div class="col-12 text-right">
                                     <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
@@ -94,7 +99,7 @@
             </div>
 
             <div class="m-t-40 text-center text-white-50">
-                <p>Already have an account ? <a href="pages-login.html" class="font-600 text-white"> Login </a> </p>
+                <p>Already have an account ? <a href="/login" class="font-600 text-white"> Login </a> </p>
                 <p>© 2018 - 2019 Foxia. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
             </div>
         </div>

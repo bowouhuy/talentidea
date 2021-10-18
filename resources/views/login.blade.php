@@ -95,7 +95,7 @@
             </div>
 
             <div class="m-t-40 text-center text-white-50">
-                <p>Don't have an account ? <a href="pages-register.html" class="font-600 text-white"> Signup Now </a> </p>
+                <p>Don't have an account ? <a href="/register" class="font-600 text-white"> Signup Now </a> </p>
                 <p>© 2018 - 2019 Foxia. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
             </div>
 
