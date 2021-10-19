@@ -49,7 +49,7 @@ class InvoiceController extends Controller
         $transaksi = Transaksi::find($transaksi_id);
         $paket = Paket::find($transaksi->paket_id);
         $jasa = Jasa::find($paket->jasa_id);
-        $mitra = Jasa::find($jasa->mitra_id)->mitra;
+        $mitra = User::where('id', $item->mitra_id)->take(1)->first();
 
         $data = array(
             'title'=> 'Invoice',
