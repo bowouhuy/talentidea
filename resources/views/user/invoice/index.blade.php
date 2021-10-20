@@ -179,11 +179,11 @@
         maxFilesize: 12,
         uploadMultiple: false, 
         maxFiles: 1,
-        // renameFile: function(file) {
-        //     var dt = new Date();
-        //     var time = dt.getTime();
-        //     return time+file.name;
-        // },
+        renameFile: function(file) {
+            var dt = new Date();
+            var time = dt.getTime();
+            return time+file.name;
+        },
         parallelUploads: 1,
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
         addRemoveLinks: true,

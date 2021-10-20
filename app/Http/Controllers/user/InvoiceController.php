@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Jasa;
+use App\Models\User;
 use App\Models\Jasaimage;
 use App\Models\Paket;
 use App\Models\Transaksi;
@@ -31,7 +32,7 @@ class InvoiceController extends Controller
     public function index($paket_id){
         $paket = Paket::find($paket_id);
         $jasa = Jasa::find($paket->jasa_id);
-        $mitra = Jasa::find($jasa->mitra_id)->mitra;
+        $mitra = User::where('id', $jasa->mitra_id)->take(1)->first();
 
         $data = array(
             'title'=> 'Invoice',
@@ -49,7 +50,7 @@ class InvoiceController extends Controller
         $transaksi = Transaksi::find($transaksi_id);
         $paket = Paket::find($transaksi->paket_id);
         $jasa = Jasa::find($paket->jasa_id);
-        $mitra = User::where('id', $item->mitra_id)->take(1)->first();
+        $mitra = User::where('id', $jasa->mitra_id)->take(1)->first();
 
         $data = array(
             'title'=> 'Invoice',
@@ -97,6 +98,7 @@ class InvoiceController extends Controller
         $jasa = Jasa::find($paket->jasa_id);
         $transaksi = Transaksi::create([
             'customer_id' => Auth::user()->id,
+            'mitra_id' => $jasa->mitra_id,
             'jasa_id' => $jasa->id,
             'paket_id' => $paket_id,
             'amount' => $paket->harga+($paket->harga*0.10),

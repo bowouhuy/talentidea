@@ -12,6 +12,7 @@ class Transaksi extends Model
 
     protected $fillable = [
         'customer_id',
+        'mitra_id',
         'jasa_id',
         'paket_id',
         'amount',

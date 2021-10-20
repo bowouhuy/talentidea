@@ -47,7 +47,7 @@ Route::prefix('/')->group(function () {
         Route::post('{subkategori_id?}', [JasaController::class, 'index']);
         Route::get('{subkategori_id?}', [JasaController::class, 'index']);
         Route::get('detail/{jasa_id}', [JasaController::class, 'show']);
-        Route::get('invoice/{paket_id}', [InvoiceController::class, 'index'])->middleware('auth');
+        Route::get('invoice/{paket_id}', [InvoiceController::class, 'index'])->middleware('auth.user');
     });
     Route::prefix('invoice')->group(function () {
         Route::post('store', [InvoiceController::class, 'store']);
@@ -59,7 +59,7 @@ Route::prefix('/')->group(function () {
 });
 
 /* ROUTE ADMIN */
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth.admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
     Route::prefix('jasa')->group(function () {
         Route::get('/', [AdminJasaController::class, 'index']);
@@ -112,7 +112,7 @@ Route::prefix('admin')->group(function () {
 });
 
 
-Route::prefix('mitra')->group(function () {
+Route::prefix('mitra')->middleware('auth.mitra')->group(function () {
     Route::get('/', [DashboardMitraController::class, 'index']);
     Route::prefix('jasa')->group(function () {
         Route::get('/', [MitraJasaController::class, 'index']);

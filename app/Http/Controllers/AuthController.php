@@ -76,7 +76,8 @@ class AuthController extends Controller
                 return redirect('/');
             }
             else{
-                return redirect(session('link'));
+                // return redirect(session('link'));
+                return redirect('/');
             }
   
         } else { // false
