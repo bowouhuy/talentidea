@@ -4,14 +4,14 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Talentidea</title>
+        <title>Talenttra</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <!-- App Icons -->
-        <link rel="shortcut icon" href="{{ asset('user_template/assets/images/favicon.ico')}} ">
+        <link rel="shortcut icon" src="{{ asset('icon/logo.png') }}">
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{ asset('user_template/assets/plugins/morris/morris.css')}} ">
@@ -27,6 +27,9 @@
         <link href="{{ asset('user_template/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="{{ asset('user_template/assets/plugins/summernote/summernote-bs4.css') }}">
         <link href="{{ asset('user_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
+
+        <!-- <script src="{{ asset('user_template/assets/js/jquery.min.js')}} "></script>
+        <script src="{{ asset('user_template/assets/js/bootstrap.bundle.min.js')}} "></script> -->
     </head>
 
     <body>
@@ -43,7 +46,7 @@
                         <div class="d-block d-lg-none mr-5">
                             
                             <a href="index.html" class="logo">
-                                <img src="{{ asset('user_template/assets/images/logo-sm.png') }}" alt="" height="28" class="logo-small"> 
+                                <img src="{{ asset('icon/logo.png') }}" alt="" height="28" class="logo-small"> 
                             </a>
 
                         </div>
@@ -67,7 +70,7 @@
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="false" aria-expanded="false">
                                         
-                                        @if (Auth::check())
+                                        @if (Auth::check() && Auth::user()->role == 1)
                                             <img src="{{ asset('user_template/assets/images/users/avatar-6.jpg') }}" alt="user" class="rounded-circle">
                                             <span class="d-none d-md-inline-block ml-1">
                                             {{Auth::user()->username}}
@@ -122,8 +125,9 @@
                             </a>
                              -->
                             <!-- Image Logo -->
-                             <a href="index.html" class="logo">
-                                <img src="{{asset('user_template/assets/images/logo.png')}}" alt="" height="20" class="logo-large">
+                             <a href="{{url('/')}}" class="logo">
+                                <img src="{{asset('icon/logo.png')}}" alt="" height="26" class="logo-large">
+                                <span class="text-warning h5 font-weight-bold ml-2">Talenttra</span>
                             </a>
 
                         </div>

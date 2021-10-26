@@ -9,6 +9,7 @@ use App\Models\Jasaimage;
 use App\Models\Kategori;
 use App\Models\Subkategori;
 use App\Models\Paket;
+use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,7 @@ class JasaController extends Controller
             }
         }
         foreach ($jasa as $key => $item) {
-            $mitra = Jasa::find($item->mitra_id)->mitra;
+            $mitra = User::where('id', $item->mitra_id)->take(1)->first();
             $data[$key] = $item;
             if ($mitra){
                 $data[$key]['nama_mitra'] = $mitra->first_name.' '.$mitra->last_name;

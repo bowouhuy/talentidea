@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Register | Talentidea</title>
+        <title>Register | Talenttra</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,14 +33,14 @@
                     <div class="p-3">
                         <div class="float-right text-right">
                             <h4 class="font-18 mt-3 m-b-5">Free Register</h4>
-                            <p class="text-muted">Get your free foxia account now.</p>
+                            <p class="text-muted">Get your free Talenttra account now.</p>
                         </div>
-                        <a href="index.html" class="logo-admin"><img src="user_template/assets/images/logo_dark.png" height="26" alt="logo"></a>
+                        <a href="{{url('/')}}" class="logo-admin"><img src="{{asset('icon/logo.png')}}" height="26" alt="logo"></a>
                     </div>
 
                     <div class="p-3">
                         
-                        <form class="form-horizontal m-t-10" method="POST" action="createUser">
+                        <form class="form-horizontal m-t-10" method="POST" action="createUser" enctype="multipart/form-data">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -76,9 +76,14 @@
                                 <input type="password" class="form-control" id="userpassword" name="password" placeholder="Enter password">
                             </div>
 
+                            <div class="form-group upload_foto">
+                                <label for="file">Upload Foto KTP</label>
+                                <input type="file" class="form-control" id="file" name="file" placeholder="Upload Foto KTP">
+                            </div>
+
                             <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customControlInline" name="mitra" value="2">
-                                        <label class="custom-control-label" for="customControlInline">Daftar sebagai mitra</label>
+                                        <input type="checkbox" class="custom-control-input" id="checkbox_mitra" name="mitra" value="2">
+                                        <label class="custom-control-label" for="checkbox_mitra">Daftar sebagai mitra</label>
                             </div>
 
                             <div class="form-group row m-t-20">
@@ -87,11 +92,21 @@
                                 </div>
                             </div>
 
-                            <div class="form-group m-t-30 mb-0 row">
+                            <!-- <div class="form-group m-t-30 mb-0 row">
                                 <div class="col-12">
-                                    <p class="font-14 text-center text-muted mb-0">By registering you agree to the Foxia <a href="#" class="text-primary">Terms of Use</a></p>
+                                    <p class="font-14 text-center text-muted mb-0">By registering you agree to the Talenttra <a href="#" class="text-primary">Terms of Use</a></p>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            <!-- <div class="form-group m-t-30 mb-0 row">
+                                <div class="col-12">
+                                    <p class="font-14 text-center text-muted mb-0">Hubungi Kami</p>
+                                    <p class="font-14 text-center text-muted mb-0">
+                                        talenttra@gmail.com <br>
+                                        0831-8495-0642
+                                    </p>
+                                </div>
+                            </div> -->
                         </form>
                     </div>
 
@@ -100,11 +115,11 @@
 
             <div class="m-t-40 text-center text-white-50">
                 <p>Already have an account ? <a href="/login" class="font-600 text-white"> Login </a> </p>
-                <p>© 2018 - 2019 Foxia. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                <p>© 2021 Talenttra <span class="d-none d-md-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Delion.</span></p>
             </div>
         </div>
 
-
+        
         <!-- jQuery  -->
         <script src="{{ asset('user_template/assets/js/jquery.min.js')}} "></script>
         <script src="{{ asset('user_template/assets/js/bootstrap.bundle.min.js')}} "></script>
@@ -115,5 +130,18 @@
         <!-- App js -->
         <script src="{{ asset('user_template/assets/js/app.js')}} "></script>
 
+        <script type="text/javascript">
+        $(document).ready(function () { 
+            $('.upload_foto').hide();
+            $('#checkbox_mitra').change(function(){
+                if ($(this).is(':checked')) {
+                    $('.upload_foto').slideDown();
+                } else {
+                    $('.upload_foto').slideUp();
+                }
+            })
+            
+        });
+        </script>
     </body>
 </html>

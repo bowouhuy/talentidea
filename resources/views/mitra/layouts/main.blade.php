@@ -4,13 +4,13 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Talentidea | Mitra</title>
+        <title>Talenttra | Creator</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App Icons -->
-        <link rel="shortcut icon" href="{{ asset('admin_template/assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" src="{{asset('icon/logo.png')}}">
 
         <link href="{{ asset('user_template/assets/plugins/dropzone/dist/dropzone.css')}} " rel="stylesheet" type="text/css">
 
@@ -27,6 +27,8 @@
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.css') }}">
         <link href="{{ asset('admin_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
         
+        <!-- <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script> -->
     </head>
     <body class="fixed-left">
         <!-- Loader -->
@@ -38,9 +40,10 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo">
-                        <img src="{{asset('admin_template/assets/images/logo.png')}}" alt="" height="20" class="logo-large">
-                        <img src="{{asset('admin_template/assets/images/logo-sm.png')}}" alt="" height="22" class="logo-sm">
+                    <a href="{{url('/')}}" class="logo">
+                        <img src="{{asset('icon/logo.png')}}" alt="" height="20" class="logo-large">
+                        <img src="{{asset('icon/logo.png')}}" alt="" height="22" class="logo-sm">
+                        <span class="text-warning h5 font-weight-bold ml-2">Talenttra</span>
                     </a>
                 </div>
 

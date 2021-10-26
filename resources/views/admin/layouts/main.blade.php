@@ -4,13 +4,13 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Talentidea | Internal</title>
+        <title>Talenttra | Internal</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App Icons -->
-        <link rel="shortcut icon" href="{{ asset('admin_template/assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" src="{{asset('icon/logo.png')}}">
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/morris/morris.css') }}">
@@ -25,6 +25,8 @@
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.css') }}">
         <link href="{{ asset('admin_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
         
+        <!-- <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script> -->
     </head>
     <body class="fixed-left">
         <!-- Loader -->
@@ -36,9 +38,10 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo">
-                        <img src="{{asset('admin_template/assets/images/logo.png')}}" alt="" height="20" class="logo-large">
-                        <img src="{{asset('admin_template/assets/images/logo-sm.png')}}" alt="" height="22" class="logo-sm">
+                    <a href="{{url('/')}}" class="logo">
+                        <img src="{{asset('icon/logo.png')}}" alt="" height="20" class="logo-large">
+                        <img src="{{asset('icon/logo.png')}}" alt="" height="22" class="logo-sm">
+                        <span class="text-warning h5 font-weight-bold ml-2">Talenttra</span>
                     </a>
                 </div>
 
@@ -64,10 +67,8 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                                 <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a>
                                 <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted"></i> My Wallet</a>
-                                <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> Settings</a>
-                                <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted"></i> Lock screen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="dripicons-exit text-muted"></i> Logout</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"><i class="dripicons-exit text-muted"></i> Logout</a>
                             </div>
                         </li>
 
@@ -111,7 +112,7 @@
                             </li>
                             <li>
                                 <a href="{{url('admin/mitra')}}" class=" waves-effect">
-                                    <i class="dripicons-user"></i><span> Mitra </span>
+                                    <i class="dripicons-user"></i><span> Creator </span>
                                 </a>
                             </li>
                             <li>

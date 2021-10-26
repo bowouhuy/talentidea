@@ -9,7 +9,14 @@
                     <div class="p-3 mini-stats-content">
                         <div class="mb-4">
                             <div class="float-right text-right">
-                                <span class="badge badge-light @if($stats['curr_total_orders'] >= $stats['recent_total_orders']) text-info @else text-danger @endif mt-2 mb-2">@if($stats['curr_total_orders'] >= $stats['recent_total_orders']) + @else - @endif {{round((float)($stats['curr_total_orders']/$stats['recent_total_orders']) * 100)}} %</span> 
+                                <span class="badge badge-light @if($stats['curr_total_orders'] >= $stats['recent_total_orders']) text-info @else text-danger @endif mt-2 mb-2">
+                                    @if($stats['curr_total_orders'] >= $stats['recent_total_orders']) + @else - @endif 
+                                    @if($stats['recent_total_orders'])
+                                    {{round((float)($stats['curr_total_orders']/$stats['recent_total_orders']) * 100)}} %
+                                    @else 
+                                    0
+                                    @endif
+                                </span> 
                                 <p class="text-white-50">From previous period</p>
                             </div>
                             
@@ -30,7 +37,14 @@
                     <div class="p-3 mini-stats-content">
                         <div class="mb-4">
                             <div class="float-right text-right">
-                                <span class="badge badge-light @if($stats['curr_total_revenue'] >= $stats['recent_total_revenue']) text-info @else text-danger @endif mt-2 mb-2">  @if($stats['curr_total_revenue'] >= $stats['recent_total_revenue']) + @else - @endif {{round((float)($stats['curr_total_revenue']/$stats['recent_total_revenue']) * 100)}} % </span> 
+                                <span class="badge badge-light @if($stats['curr_total_revenue'] >= $stats['recent_total_revenue']) text-info @else text-danger @endif mt-2 mb-2">
+                                    @if($stats['curr_total_revenue'] >= $stats['recent_total_revenue']) + @else - @endif 
+                                    @if($stats['recent_total_revenue'])
+                                    {{round((float)($stats['curr_total_revenue']/$stats['recent_total_revenue']) * 100)}} % 
+                                    @else 
+                                    0
+                                    @endif
+                                </span> 
                                 <p class="text-white-50">From previous period</p>
                             </div>
                             
@@ -72,7 +86,14 @@
                     <div class="p-3 mini-stats-content">
                         <div class="mb-4">
                             <div class="float-right text-right">
-                                <span class="badge badge-light @if($stats['curr_total_jasa'] >= $stats['recent_total_jasa']) text-info @else text-danger @endif mt-2 mb-2"> @if($stats['curr_total_jasa'] >= $stats['recent_total_jasa']) + @else - @endif {{round((float)($stats['curr_total_jasa']/$stats['recent_total_jasa']) * 100)}} % </span> 
+                                <span class="badge badge-light @if($stats['curr_total_jasa'] >= $stats['recent_total_jasa']) text-info @else text-danger @endif mt-2 mb-2"> 
+                                    @if($stats['curr_total_jasa'] >= $stats['recent_total_jasa']) + @else - @endif 
+                                    @if($stats['recent_total_jasa'])
+                                    {{round((float)($stats['curr_total_jasa']/$stats['recent_total_jasa']) * 100)}} % 
+                                    @else 
+                                    0
+                                    @endif
+                                </span> 
                                 <p class="text-white-50">From previous period</p>
                             </div>
                             <span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">{{$stats['curr_total_jasa']}}/{{$stats['recent_total_jasa']}}</span>

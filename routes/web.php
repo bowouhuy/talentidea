@@ -56,6 +56,9 @@ Route::prefix('/')->group(function () {
     Route::get('profile/list',[UserTransaksiController::class,'list']);
     Route::get('profile/order',[UserTransaksiController::class,'listorder']);
     Route::get('profile/order/download',[UserTransaksiController::class,'getDownload']);
+    // Route::prefix('faq')->group(function () {
+    //     Route::get('1', function(){return view('user.faq.1');});
+    // });
 });
 
 /* ROUTE ADMIN */
@@ -104,6 +107,7 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
     Route::prefix('mitra')->group(function () {
         Route::get('/', [AdminMitraController::class, 'index']);
         Route::get('list',[AdminMitraController::class,'list']);
+        Route::post('store',[AdminMitraController::class,'store']);
     });
     Route::prefix('customer')->group(function () {
         Route::get('/', [AdminCustomerController::class, 'index']);

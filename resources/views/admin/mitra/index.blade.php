@@ -18,19 +18,43 @@
                     <thead>
                         <tr>
                             <th class="text-center">Username</th>
-                            <!-- <th>Image</th> -->
                             <th class="text-center">First Name</th>
                             <th class="text-center">Last Name</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Tanggal Register</th>
-
-
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Datatable -->
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="show-image">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form action="{{url('admin/mitra/store')}}" method="post">
+                @csrf
+                    <input type="hidden" name="user_id">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Verifikasi</button>
+                </form>
             </div>
         </div>
     </div>
@@ -54,11 +78,24 @@
                 {data: 'first_name', name: 'first_name'},
                 {data: 'last_name', name: 'last_name'},
                 {data: 'email', name: 'email'},
-                {data: 'register_tanggal', name: 'register_tanggal'}
-            ]
+                {data: 'register_tanggal', name: 'register_tanggal'},
+                {data: 'status', name: 'status'},
+                {data: 'action', name: 'action'}
+            ],
+            "columnDefs": [
+            {
+                "targets": [4,5,6],
+                "className": "text-center",
+            }
+        ],
         });
     });
 
+    function verifikasi_user(image_url, id){
+        $('.show-image').html('<img src='+ image_url +' class="rounded" width="100%">')
+        $('[name="user_id"]').val(id); 
+        $('#imageModal').modal('show'); 
+    }
 
 </script>
 @endsection

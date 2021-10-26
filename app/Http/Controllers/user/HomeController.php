@@ -40,10 +40,37 @@ class HomeController extends Controller
             }
         }
 
+        $mitra = DB::select('SELECT a.id AS user_id, a.first_name, a.last_name, b.total, c.* FROM users a
+                    INNER JOIN (
+                    SELECT mitra_id, jasa_id, COUNT(*) AS total FROM transaksi 
+                    GROUP BY mitra_id, jasa_id
+                    )b ON a.id = b.mitra_id
+                    INNER JOIN jasa c ON b.jasa_id = c.id
+                    ORDER BY b.total DESC
+                    LIMIT 4
+                ');
+        $res_mitra = array();
+        foreach ($mitra as $key => $item) {
+            $jasa_image = Jasaimage::where('jasa_id', $item->id)->take(1)->first();
+            $res_mitra[$key] = $item;
+            if ($jasa_image){
+                $res_mitra[$key]->image = $jasa_image->url;
+            }
+        }
+
+        foreach ($mitra as $key => $item) {
+            $user_image = Userimages::where('user_id', $item->user_id)->take(1)->first();
+            $res_mitra[$key] = $item;
+            if ($user_image){
+                $res_mitra[$key]->user_image = $user_image->filename;
+            }
+        }
+        
         $data = array(
             'title'=> 'Dashboard',
             'menu' => $this->menu,
-            'jasa' => $res
+            'jasa' => $res,
+            'mitra' => $res_mitra
         );
 
         return view('user.home.index', $data);

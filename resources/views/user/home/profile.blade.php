@@ -82,9 +82,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            asd
-        </div>
     </div>
 </div>
 

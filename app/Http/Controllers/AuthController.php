@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Userimages;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -31,11 +32,15 @@ class AuthController extends Controller
 
         if(isset($request->mitra)){
             $role=2;
+            $request->validate(['file' => 'required']) ;
+            $image = $request->file('file');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('images/user_image'),$filename);
         }else{
             $role=1;
         }
 
-        User::create([
+        $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'username' => $request->username,
@@ -43,6 +48,12 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'register_tanggal' => \Carbon\Carbon::now(), # new \Datetime()
             'role' => $role
+        ]);
+
+        $user_image = Userimages::create([
+            'user_id' => $user->id,
+            'filename' => $filename,
+            'url' => $filename,
         ]);
         return redirect('/login')
         ->with('success', 'Project created successfully.');
