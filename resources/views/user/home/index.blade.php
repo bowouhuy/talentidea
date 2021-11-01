@@ -295,7 +295,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal3">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -309,7 +309,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal4">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -323,7 +323,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal5">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -337,7 +337,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal6">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -351,7 +351,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal7">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -365,7 +365,21 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal8">
+                                    <div class="card" height="350px">
+                                        <div class="p-3 card-body">
+                                            <div class="media text-secondary">
+                                                <div class="media-body my-auto">
+                                                    <h5 class="my-auto">Pesanan</h5>
+                                                </div>
+                                                <i class="mx-3 my-auto fa fa-angle-right fa-2x"></i>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                            <a href="#" data-toggle="modal" data-target="#modal17">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -379,7 +393,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal10">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -393,7 +407,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal11">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -407,7 +421,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal12">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -421,7 +435,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal14">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -435,7 +449,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal15">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
@@ -449,7 +463,7 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#modal16">
                                     <div class="card" height="350px">
                                         <div class="p-3 card-body">
                                             <div class="media text-secondary">
