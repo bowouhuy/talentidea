@@ -25,8 +25,8 @@
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.css') }}">
         <link href="{{ asset('admin_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
         
-        <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
     </head>
     <body class="fixed-left">
         <!-- Loader -->
@@ -62,7 +62,7 @@
                             <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
                                 <img src="{{ asset('admin_template/assets/images/users/avatar-6.jpg')}} " alt="user" class="rounded-circle">
-                                <span class="d-none d-md-inline-block ml-1">Donald T. <i class="mdi mdi-chevron-down"></i> </span>
+                                <span class="d-none d-md-inline-block ml-1">{{Auth::user()->username}}<i class="mdi mdi-chevron-down"></i> </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                                 <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a>

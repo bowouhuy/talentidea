@@ -1,6 +1,6 @@
 <!-- jQuery  -->
-<script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('admin_template/assets/js/modernizr.min.js') }}"></script>
 <script src="{{ asset('admin_template/assets/js/metisMenu.min.js') }}"></script>
 <script src="{{ asset('admin_template/assets/js/jquery.slimscroll.js') }}"></script>
