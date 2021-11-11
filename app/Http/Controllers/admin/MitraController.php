@@ -43,7 +43,7 @@ class MitraController extends Controller
         })
         ->addColumn('action', function($row){
             return '
-            <button onclick=verifikasi_user("'.asset('images/user_image/').'/'.$row->filename.'",'.$row->id.') class="btn btn-sm btn-primary"><b><i class="fa fa-check mr-1"></i>Verifikasi</b></button>
+            <button onclick=verifikasi_user("'.asset('images/user_image/').'/'.$row->filename.'",'.$row->id.') data-toggle="modal" data-target="#imageModal" class="btn btn-sm btn-primary"><b><i class="fa fa-check mr-1"></i>Verifikasi</b></button>
             ';
         })
         ->rawColumns(['status','action'])

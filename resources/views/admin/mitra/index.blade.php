@@ -94,7 +94,6 @@
     function verifikasi_user(image_url, id){
         $('.show-image').html('<img src='+ image_url +' class="rounded" width="100%">')
         $('[name="user_id"]').val(id); 
-        $('#imageModal').modal('show'); 
     }
 
 </script>
