@@ -25,8 +25,8 @@
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.css') }}">
         <link href="{{ asset('admin_template/assets/plugins/sweet-alert2/sweetalert2.min.css')}} " rel="stylesheet" type="text/css">
         
-        <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script>
     </head>
     <body class="fixed-left">
         <!-- Loader -->

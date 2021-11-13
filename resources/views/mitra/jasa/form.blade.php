@@ -70,9 +70,9 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
+<!-- <script src="{{ asset('admin_template/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('admin_template/assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('admin_template/assets/plugins/summernote/summernote-bs4.min.js') }}"></script> -->
 <script src="{{ asset('user_template/assets/plugins/sweet-alert2/sweetalert2.min.js')}} "></script>
 <script src="{{ asset('user_template/assets/pages/sweet-alert.init.js')}} "></script>
 <script>
