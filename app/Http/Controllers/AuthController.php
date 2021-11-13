@@ -38,6 +38,7 @@ class AuthController extends Controller
             $image->move(public_path('images/user_image'),$filename);
         }else{
             $role=1;
+            $filename = '';
         }
 
         $user = User::create([
@@ -50,11 +51,13 @@ class AuthController extends Controller
             'role' => $role
         ]);
 
-        $user_image = Userimages::create([
-            'user_id' => $user->id,
-            'filename' => $filename,
-            'url' => $filename,
-        ]);
+        if ($filename){
+            $user_image = Userimages::create([
+                'user_id' => $user->id,
+                'filename' => $filename,
+                'url' => $filename,
+            ]);
+        }
         return redirect('/login')
         ->with('success', 'Project created successfully.');
     }

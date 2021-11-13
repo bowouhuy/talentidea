@@ -156,3 +156,13 @@ Route::prefix('helper')->group(function () {
     Route::get('get_paket/{paket_id}', [HelperController::class, 'get_paket']);
     Route::get('get_jasa_images/{jasa_id}', [HelperController::class, 'get_jasa_images']);
 });
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
+Route::get('/clear-route', function() {
+    Artisan::call('route:clear');
+    return "Route is cleared";
+});
