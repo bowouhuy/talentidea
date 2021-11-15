@@ -35,12 +35,12 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div class="p-3">
+                    <div class="p-3 mb-5">
                         <div class="float-right text-right">
                             <h4 class="font-18 mt-3 m-b-5">Welcome Back !</h4>
                             <p class="text-muted">Sign in to continue to Talenttra.</p>
                         </div>
-                        <a href="{{url('/')}}" class="logo-admin"><img src="{{asset('icon/logo.png')}}" height="26" alt="logo"></a>
+                        <!-- <a href="{{url('/')}}" class="logo-admin"><img src="{{asset('icon/logo.png')}}" height="26" alt="logo"></a> -->
                     </div>
 
                     <div class="p-3">

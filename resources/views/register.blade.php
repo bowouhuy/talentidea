@@ -30,12 +30,12 @@
         <div class="wrapper-page">
             <div class="card">
                 <div class="card-body">
-                    <div class="p-3">
+                    <div class="p-3 mb-5">
                         <div class="float-right text-right">
                             <h4 class="font-18 mt-3 m-b-5">Free Register</h4>
                             <p class="text-muted">Get your free Talenttra account now.</p>
                         </div>
-                        <a href="{{url('/')}}" class="logo-admin"><img src="{{asset('icon/logo.png')}}" height="26" alt="logo"></a>
+                        <!-- <a href="{{url('/')}}" class="logo-admin"><img src="{{asset('icon/logo.png')}}" height="26" alt="logo"></a> -->
                     </div>
 
                     <div class="p-3">
@@ -73,17 +73,22 @@
 
                             <div class="form-group">
                                 <label for="userpassword">Password</label>
-                                <input type="password" class="form-control" id="userpassword" name="password" placeholder="Enter password">
+                                <div class="input-group" id="show_hide_password">
+                                    <input type="password" id="password" class="form-control" id="userpassword" name="password" placeholder="Enter password">
+                                    <div class="input-group-text" style="cursor: pointer;">
+                                        <span toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-pass mx-auto"></span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group upload_foto">
-                                <label for="file">Upload Foto KTP</label>
+                                <label for="file">Upload Foto KTM</label>
                                 <input type="file" class="form-control" id="file" name="file" placeholder="Upload Foto KTP">
                             </div>
 
                             <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="checkbox_mitra" name="mitra" value="2">
-                                        <label class="custom-control-label" for="checkbox_mitra">Daftar sebagai mitra</label>
+                                        <label class="custom-control-label" for="checkbox_mitra">Daftar sebagai creator</label>
                             </div>
 
                             <div class="form-group row m-t-20">
@@ -140,6 +145,22 @@
                     $('.upload_foto').slideUp();
                 }
             })
+
+            var togglepass = document.querySelector(".toggle-pass");
+            togglepass.addEventListener('click', function() {
+                if(togglepass.classList.contains('fa-eye-slash')){
+                    togglepass.classList.remove("fa-eye-slash");
+                } else {
+                    togglepass.classList.add("fa-eye-slash");
+                }
+                    
+                var x = document.getElementById("password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            });
             
         });
         </script>

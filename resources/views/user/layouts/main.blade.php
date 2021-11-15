@@ -161,6 +161,7 @@
         
         @yield('body')
 
+        <div class="my-5"></div>
         <!-- Footer -->
         @extends('user.layouts.footer')
         <!-- End Footer -->
