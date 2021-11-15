@@ -25,8 +25,9 @@ class AuthController extends Controller
         // dd($request->mitra);
         $request->validate([
             'first_name' => 'required',
-            'username' => 'required',
-            'email' => 'required',
+            'last_name' => 'required',
+            'username' => 'required|unique:users,username',
+            'email' => 'required|unique:users,email',
             'password' => 'required'
         ]);
 

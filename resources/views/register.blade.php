@@ -53,28 +53,28 @@
                         @endif
                             <div class="form-group">
                                 <label for="firstname">First Name</label>
-                                <input type="text" class="form-control" id="firstname" name="first_name" placeholder="Enter first name" required>
+                                <input type="text" class="form-control" id="firstname" value="{{old('first_name')}}" name="first_name" placeholder="Enter first name">
                             </div>
                         
                             <div class="form-group">
                                 <label for="lastname">Last Name</label>
-                                <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Enter last name">
+                                <input type="text" class="form-control" id="lastname" value="{{old('last_name')}}" name="last_name" placeholder="Enter last name">
                             </div>
                             
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                                <input type="text" class="form-control" id="username" value="{{old('username')}}" name="username" placeholder="Enter username">
                             </div>
                             
                             <div class="form-group">
                                 <label for="useremail">Email</label>
-                                <input type="email" class="form-control" id="useremail" name="email" placeholder="Enter email">
+                                <input type="email" class="form-control" id="useremail" value="{{old('email')}}" name="email" placeholder="Enter email">
                             </div>
 
                             <div class="form-group">
                                 <label for="userpassword">Password</label>
                                 <div class="input-group" id="show_hide_password">
-                                    <input type="password" id="password" class="form-control" id="userpassword" name="password" placeholder="Enter password">
+                                    <input type="password" id="password" class="form-control" value="{{old('password')}}" id="userpassword" name="password" placeholder="Enter password">
                                     <div class="input-group-text" style="cursor: pointer;">
                                         <span toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-pass mx-auto"></span>
                                     </div>
