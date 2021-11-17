@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App Icons -->
-        <link rel="shortcut icon" href="{{ asset('user_template/assets/images/favicon.ico')}} ">
+        <link rel="icon" href="{{ asset('icon/fixlogo.ico')}}"
 
         <!-- App css -->
         <link href="{{ asset('user_template/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />

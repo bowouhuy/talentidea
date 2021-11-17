@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App Icons -->
-        <link rel="shortcut icon" src="{{asset('icon/logo.png')}}">
+        <link rel="icon" href="{{ asset('icon/fixlogo.ico')}}"
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{ asset('admin_template/assets/plugins/morris/morris.css') }}">

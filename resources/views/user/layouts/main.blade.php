@@ -11,7 +11,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <!-- App Icons -->
-        <link rel="shortcut icon" src="{{ asset('icon/logo.png') }}">
+        <!-- <link rel="shortcut icon" src="{{ asset('icon/fixlogo.ico') }}"> -->
+        <link rel="icon" href="{{ asset('icon/fixlogo.ico')}}"
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{ asset('user_template/assets/plugins/morris/morris.css')}} ">

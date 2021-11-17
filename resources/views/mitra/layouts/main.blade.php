@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App Icons -->
-        <link rel="shortcut icon" src="{{asset('icon/logo.png')}}">
+        <link rel="icon" href="{{ asset('icon/fixlogo.ico')}}"
 
         <link href="{{ asset('user_template/assets/plugins/dropzone/dist/dropzone.css')}} " rel="stylesheet" type="text/css">
 
