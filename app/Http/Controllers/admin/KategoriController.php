@@ -46,10 +46,9 @@ class KategoriController extends Controller
 
     
 
-    
 
 
-    public function form_subkategori_store(Request $request){    
+    public function form_kategori_store(Request $request){    
         $request->validate([
             'nama' => 'required|max:255'
         ]);
@@ -58,7 +57,7 @@ class KategoriController extends Controller
     
            
         if ($kategori->save()){
-            return redirect('admin/subkategori');
+            return redirect('admin/kategori');
         }else{
             return back();
         }
