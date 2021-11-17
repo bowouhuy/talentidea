@@ -33,7 +33,8 @@
                                 <div class="invoice-title">
                                     <h4 class="pull-right font-16"><strong>Order # {{date('YmdHis')}}</strong></h4>
                                     <h3 class="mt-0">
-                                        <img src="{{asset('user_template/assets/images/logo_dark.png')}}" alt="logo" height="20"/>
+                                        <img src="{{asset('icon/logo.png')}}" alt="logo" height="20"/>
+                                <span class="text-warning h5 font-weight-bold ml-2">Talenttra</span>
                                     </h3>
                                 </div>
                                 <hr>
@@ -58,9 +59,17 @@
                                 <div class="row">
                                     <div class="col-6 m-t-30">
                                         <address>
-                                            <strong>Payment Method:</strong><br>
-                                            BCA 1234 5678 9012<br>
-                                            admin@talenttra.id <br>
+                                            <strong>Payment Method:</strong>
+                                            <h6>Bank Utama:</h6>
+                                            BRI 7000-01-017411-53-0<br>
+                                            (Khaulah Aqilah Sanaba)<br>
+                                            <h6>Bank Lainnya:</h6>
+                                            Mandiri Syariah / BSI 7131183326<br>
+                                            (Khaulah Aqilah Sanaba)<br>
+                                            <br>Mandiri 1100011247928<br>
+                                            (Lara Arilisa Kinanti)<br>
+                                            <br>BNI 0803055094<br>
+                                            (Suci Fazriyah Nurrahmi)<br>
                                         </address>
                                     </div>
                                     <div class="col-6 m-t-30 text-right">

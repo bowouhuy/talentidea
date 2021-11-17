@@ -63,28 +63,6 @@ class KategoriController extends Controller
             return back();
         }
 
-    
-
-        // $jasa_id = $request->input('jasa_id');
-
-        // if (!$jasa_id){
-        //     /** Insert Jasa */
-        //     $jasa = Jasa::create([
-        //         'nama' => $request->input('nama'),
-        //         'subkategori_id' => $request->input('subkategori_id'),
-        //         'mitra_id' => 1,
-        //         'deskripsi' => $request->input('deskripsi'),
-        //     ]);
-        // } else {
-        //     $jasa = Jasa::find($jasa_id);
-        //     $jasa->nama = $request->input('nama');
-        //     $jasa->subkategori_id = $request->input('subkategori_id');
-        //     $jasa->deskripsi = $request->input('deskripsi');
-        // }
-        
-        // if ($jasa->save()){
-        //     return redirect('admin/jasa/form_images/'.$jasa->id);
-        // }
     }
 
     /**

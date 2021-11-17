@@ -119,7 +119,7 @@
                     <div class="container-fluid">
                         <!-- Logo-->
                         <div class="d-none d-lg-block">
-                            <!-- Text Logo
+                            <!-- Text Logog
                             <a href="index.html" class="logo">
                                 Foxia
                             </a>
@@ -131,7 +131,7 @@
                             </a>
 
                         </div>
-                        <!-- End Logo-->
+                        <!-- End Logo-->    
                         <div id="navigation">
                             <ul class="navigation-menu">
                                 <li class="has-submenu">

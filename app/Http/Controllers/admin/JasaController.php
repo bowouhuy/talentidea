@@ -78,7 +78,8 @@ class JasaController extends Controller
         return view('admin.jasa.form', $data);
     }
 
-    public function form_jasa_store(Request $request){    
+    public function form_jasa_store(Request $request){  
+        //Wisnu Andrian - 1900018419  
         $request->validate([
             'nama' => 'required|max:255',
             'deskripsi' => 'required',
