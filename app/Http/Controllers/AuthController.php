@@ -37,9 +37,11 @@ class AuthController extends Controller
             $image = $request->file('file');
             $filename = $image->getClientOriginalName();
             $image->move(public_path('images/user_image'),$filename);
+            $user_st='0';
         }else{
             $role=1;
             $filename = '';
+            $user_st='1';
         }
 
         $user = User::create([
@@ -47,6 +49,7 @@ class AuthController extends Controller
             'last_name' => $request->last_name,
             'username' => $request->username,
             'email' => $request->email,
+            'user_st' => $user_st,
             'password' => Hash::make($request->password),
             'register_tanggal' => \Carbon\Carbon::now(), # new \Datetime()
             'role' => $role
@@ -76,25 +79,31 @@ class AuthController extends Controller
 
         Auth::attempt($data);
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
-            //Login Success
-            Session::flash('success', 'Berhasil Login');
-            // dd(Auth::user()->role);
-            if (Auth::user()->role ===2){
-                return redirect('/mitra');
-            }else if(Auth::user()->role ===0){
-                return redirect('/admin');
+            if (Auth::user()->user_st === '1'){
+                //Login Success
+                Session::flash('success', 'Berhasil Login');
+                // dd(Auth::user()->role);
+                if (Auth::user()->role ===2){
+                    return redirect('/mitra');
+                }else if(Auth::user()->role ===0){
+                    return redirect('/admin');
+                }
+                else if(substr(session('link'), -8) === "register"){
+                    return redirect('/');
+                }
+                else if(substr(session('link'), -5) === "login"){
+                    return redirect('/');
+                }
+                else{
+                    // return redirect(session('link'));
+                    return redirect('/');
+                }
+            } else {
+                //Login Fail
+                Session::flash('error', 'Akun Belum di verifikasi');
+                return redirect('/login');
             }
-            else if(substr(session('link'), -8) === "register"){
-                return redirect('/');
-            }
-            else if(substr(session('link'), -5) === "login"){
-                return redirect('/');
-            }
-            else{
-                // return redirect(session('link'));
-                return redirect('/');
-            }
-  
+
         } else { // false
   
             //Login Fail
