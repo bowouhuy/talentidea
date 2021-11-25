@@ -43,7 +43,7 @@
                                         <address>
                                             <strong>Billed To:</strong><br>
                                             {{$customer->first_name}} {{$customer->last_name}}<br>
-                                            {{$customer->email}}
+                                            {{$customer->email}}<br>
                                         </address>
                                     </div>
                                     <div class="col-6 text-right">
@@ -77,6 +77,7 @@
                                             <strong>Penyedia Jasa:</strong><br>
                                             {{$mitra->email}} <br>
                                             {{$mitra->first_name}} {{$mitra->last_name}} <br>
+                                            <a href="http://api.whatsapp.com/send?phone={{$mitra->no_hp}}">Kirim pesan untuk mengirimkan detail lebih lanjut </a><br>
                                             <strong>Order Date:</strong><br>
                                             {{date('d-m-Y')}}<br><br>
                                         </address>
@@ -153,6 +154,7 @@
 </div>
 <!-- MODAL KONFIRMASI PEMBAYARAN -->
 <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -162,9 +164,15 @@
                 </button>
             </div>
             <div class="modal-body">
+            <div class="form-group">
+                    <label for="file">Deskripsi Pekerjaan</label>
+                    <input class="form-control" type="text" id="deskripsi" placeholder="Jelaskan deksripsi pekerjaan">
+            </div>
                 <form action="{{url('invoice/store')}}" class="dropzone" id="dropzone" method="post" enctype="multipart/form-data">
                 @csrf
                 <input name="paket_id" type="hidden" value="{{$paket->id}}">
+                <input type="hidden" name="deskripsi">
+
                     <div class="fallback">
                         <input name="file" type="file" multiple="multiple">
                     </div>
@@ -182,7 +190,12 @@
 <script src="{{ asset('user_template/assets/plugins/sweet-alert2/sweetalert2.min.js')}} "></script>
 <script src="{{ asset('user_template/assets/pages/sweet-alert.init.js')}} "></script>
 <script>
-    Dropzone.autoDiscover = false;
+$(document).ready(function() {
+    $('#deskripsi').change(function (){
+        $('[name="deskripsi"]').val($(this).val())
+    })
+})
+    Dropzone.autoDiscover = false;++
 
     var myDropzone = new Dropzone(".dropzone", { 
         maxFilesize: 12,

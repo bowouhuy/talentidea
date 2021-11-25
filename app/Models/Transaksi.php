@@ -16,6 +16,7 @@ class Transaksi extends Model
         'jasa_id',
         'paket_id',
         'amount',
+        'deskripsi',
         'kode_invoice',
         'tanggal_invoice',
         'tanggal_expired',

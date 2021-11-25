@@ -72,6 +72,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="usernohp">No Handphone</label>
+                                <input type="text" class="form-control" id="nohp" value="{{old('no_hp')}}" name="no_hp" placeholder="Enter No Whatsapp ( Cth : 6289666451555 )">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="userpassword">Password</label>
                                 <div class="input-group" id="show_hide_password">
                                     <input type="password" id="password" class="form-control" value="{{old('password')}}" id="userpassword" name="password" placeholder="Enter password">

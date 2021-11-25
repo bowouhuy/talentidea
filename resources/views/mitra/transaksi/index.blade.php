@@ -15,6 +15,7 @@
                             <th>Kode Invoice</th>
                             <th class="text-center">Nama Jasa</th>
                             <th>Image</th>
+                            <th>Deskripsi Pekerjaan</th>
                             <th class="text-center">Tanggal</th>
                             <th class="text-center">Mitra</th>
                             <th class="text-center">Status</th>
@@ -74,6 +75,7 @@
                 {data: 'kode_invoice', name: 'kode_invoice'},
                 {data: 'jasa.nama', name: 'jasa.nama'},
                 {data: 'jasa_image', name: 'jasa_image'},
+                {data: 'deskripsi', name:'deskripsi'},
                 {data: 'tanggal_transaksi', name: 'tanggal_transaksi'},
                 {data: 'nama_mitra', name: 'nama_mitra'},
                 {data: 'status_transaksi', name: 'status_transaksi'},

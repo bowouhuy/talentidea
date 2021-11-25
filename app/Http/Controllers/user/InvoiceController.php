@@ -89,6 +89,8 @@ class InvoiceController extends Controller
     public function store(Request $request){
         $image = $request->file('file');
         $paket_id = $request->input('paket_id');
+        $deskripsi = $request->input('deskripsi');
+
         
         /** Upload Images */
         $filename = $image->getClientOriginalName();
@@ -102,13 +104,13 @@ class InvoiceController extends Controller
             'jasa_id' => $jasa->id,
             'paket_id' => $paket_id,
             'amount' => $paket->harga+($paket->harga*0.10),
+            'deskripsi' => $deskripsi,
             'kode_invoice' => date('YmdHis'),
             'tanggal_invoice' => date('Y-m-d'),
             'tanggal_expired' => date('Y-m-d', strtotime('+'.$paket->estimasi.' days', strtotime(date('Y-m-d')))),
             'tanggal_transaksi' => date('Y-m-d'),
             'bukti_transaksi' => $filename
         ]);
-        
         if ($transaksi->save()){
             return response()->json(['success'=> 'Transaksi Created!']);
         }
