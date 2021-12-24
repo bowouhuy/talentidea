@@ -12,6 +12,8 @@ use App\Models\Transaksi;
 use App\Models\Jasa;
 use App\Models\Jasaimage;
 use App\Models\User;
+use App\Exports\TransaksiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransaksiController extends Controller
 {
@@ -113,4 +115,9 @@ class TransaksiController extends Controller
     {
         //
     }
+
+    public function export()
+	{
+		return Excel::download(new TransaksiExport, 'transaksi.xlsx');
+	}
 }

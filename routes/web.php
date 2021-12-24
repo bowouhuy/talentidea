@@ -103,6 +103,7 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::get('/', [AdminTransaksiController::class, 'index']);
         Route::get('list',[AdminTransaksiController::class,'list']);
         Route::post('store',[AdminTransaksiController::class,'store']);
+        Route::get('/export',[AdminTransaksiController::class,'export']);
     });
     Route::prefix('mitra')->group(function () {
         Route::get('/', [AdminMitraController::class, 'index']);
