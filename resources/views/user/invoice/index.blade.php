@@ -195,7 +195,7 @@ $(document).ready(function() {
         $('[name="deskripsi"]').val($(this).val())
     })
 })
-    Dropzone.autoDiscover = false;++
+    Dropzone.autoDiscover = false;
 
     var myDropzone = new Dropzone(".dropzone", { 
         maxFilesize: 12,

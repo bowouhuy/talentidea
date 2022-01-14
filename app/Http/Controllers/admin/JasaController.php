@@ -13,6 +13,7 @@ use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
+use Spatie\ArrayToXml\ArrayToXml;
 
 class JasaController extends Controller
 {
@@ -215,5 +216,16 @@ class JasaController extends Controller
                 File::delete(['upload/test.png', 'upload/test2.png']);
             */
         }
+    }
+
+    public function listxml() {
+        $jasa = Jasa::all()->toArray();
+
+        $items['jasa'] = $jasa;
+
+        return ArrayToXml::convert($items);
+
+       
+    
     }
 }

@@ -171,3 +171,5 @@ Route::get('/clear-route', function() {
     Artisan::call('route:clear');
     return "Route is cleared";
 });
+
+Route::get('admin/jasa/listxml', [AdminJasaController::class, 'listxml']);
