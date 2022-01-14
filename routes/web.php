@@ -40,9 +40,13 @@ use App\Http\Controllers\mitra\OrderController as MitraOrderController;
 // });
 
 /* ROUTE USER */
+
+
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('profile', [HomeController::class, 'profile']);
+    Route::get('read-xml', [\App\Http\Controllers\ReadXmlController::class, 'index']);
+
     Route::prefix('jasa')->group(function () {
         Route::post('{subkategori_id?}', [JasaController::class, 'index']);
         Route::get('{subkategori_id?}', [JasaController::class, 'index']);

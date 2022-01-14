@@ -47,6 +47,8 @@ class TransaksiController extends Controller
                 $data[$key]['nama_mitra'] = $mitra->first_name.' '.$mitra->last_name;
             }
         }
+        $data2 = json_encode($data);
+        dd($data2);
         // dd($data);
         return DataTables::of($data)
             ->addColumn('jasa_image', function($row){

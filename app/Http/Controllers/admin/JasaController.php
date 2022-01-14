@@ -27,6 +27,7 @@ class JasaController extends Controller
     public function list() {
         $jasa = Jasa::all();
 
+
         $data = array();
         foreach ($jasa as $key => $item) {
             $jasa_image = Jasaimage::where('jasa_id', $item->id)->take(1)->first();
@@ -42,7 +43,7 @@ class JasaController extends Controller
                 $data[$key]['nama_mitra'] = $mitra->first_name.' '.$mitra->last_name;
             }
         }
-
+      
         return DataTables::of($data)
             ->addColumn('jasa_image', function($row){
                 if ($row->image){

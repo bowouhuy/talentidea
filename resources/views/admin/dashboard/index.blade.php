@@ -148,6 +148,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">Latest Transactions</h4>
+                        <a class="btn btn-primary" href="{{url('admin/transaksi/export')}}" role="button">Get Reporting</a>
+
                         <div class="table-responsive mt-4">
                             <table class="table table-hover mb-0">
                                 <thead>
